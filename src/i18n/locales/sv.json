@@ -28,7 +28,15 @@
     "cancel": "Avbryt",
     "close": "Stäng",
     "view": "Visa",
-    "learnMore": "Läs mer"
+    "learnMore": "Läs mer",
+    "selectLanguage": "Välj språk",
+    "currentLanguageAria": "Nuvarande språk: {{languageName}}. Klicka för att byta språk.",
+    "logoAlt": "07–20 Ungdomsutvecklingsinitiativets logotyp",
+    "success": "Klart",
+    "tryAgain": "Försök igen.",
+    "copied": "Kopierat",
+    "unknown": "Okänd",
+    "openMenu": "Öppna meny"
   },
   "home": {
     "heroTitle": "En professionell plattform för ungdomsutveckling (7–20)",
@@ -42,7 +50,9 @@
       "focusAreas": "Fokusområden",
       "focusAreasValue": "Utbildning & Idrott",
       "communityPartners": "Samhällspartners",
-      "communityPartnersValue": "Växande"
+      "communityPartnersValue": "Växande",
+      "ageRangeValue": "7–20",
+      "programsValue": "4+"
     },
     "gdprCompliant": "GDPR-kompatibel",
     "childSafeguarding": "Barnskydd",
@@ -64,7 +74,13 @@
     "ethicalGovernance": "Etisk styrning",
     "programsTitle": "Våra utvecklingsprogram",
     "programsSubtitle": "Omfattande vägar utformade för att stödja alla aspekter av ungdomsutveckling, från akademiska framgångar till personlig tillväxt.",
-    "viewAllPrograms": "Visa alla program"
+    "viewAllPrograms": "Visa alla program",
+    "missionPillars": {
+      "safeguardingDesc": "Nolltolerans för kränkningar med tydliga rutiner för rapportering och starka krav för alla vuxna.",
+      "dataProtectionDesc": "GDPR-först: hantering, gallring och rättigheter inbyggt.",
+      "financialDesc": "Transparent rapportering, revision och exporterbar dokumentation för partners.",
+      "ethicalDesc": "Tydlig styrning, hantering av jäv och ansvarstagande."
+    }
   },
   "about": {
     "title": "Om oss",
@@ -193,7 +209,9 @@
       "enrollments": "Inskrivningar",
       "invites": "Inbjudningar",
       "audit": "Inbjudningslogg",
-      "exports": "Export"
+      "exports": "Export",
+      "ack": "Skyddsbekräftelser",
+      "attendance": "Närvaro / RSVP-efterlevnad"
     },
     "exports": {
       "safeguardingPdf": "Exportera skyddsbekräftelser (PDF)",
@@ -206,7 +224,15 @@
       "expiresDays": "Giltighet (dagar)",
       "maxUses": "Max antal användningar",
       "generated": "Skapad kod",
-      "copy": "Kopiera"
+      "copy": "Kopiera",
+      "createErrorTitle": "Kunde inte skapa inbjudan",
+      "generating": "Skapar…",
+      "copiedBody": "Inbjudningskoden kopierades till urklipp.",
+      "redeemHint": "Mottagaren ska gå till",
+      "redeemHint2": "och välja Skapa konto med inbjudningskod.",
+      "activeListHelp": "Listan visar inte själva koden (endast metadata). Generera en ny kod vid behov.",
+      "auditHelp": "Oföränderlig logg över användning av inbjudningskoder. Stödjer granskning och kommun-/sponsoruppföljning.",
+      "auditEmpty": "Ingen användning loggad ännu."
     },
     "roles": {
       "participant": "Deltagare",
@@ -235,11 +261,73 @@
     "inviteUsageAudit": "Inbjudningsanvändningslogg",
     "usedAt": "Använd vid",
     "usedBy": "Använd av",
-    "assignedRole": "Tilldelad roll"
+    "assignedRole": "Tilldelad roll",
+    "ack": {
+      "title": "Exportera bekräftelser",
+      "csv": "CSV",
+      "pdf": "PDF",
+      "description": "Listan genereras från digitala bekräftelser som sparas i backend.",
+      "total": "Totalt antal bekräftelser"
+    },
+    "attendance": {
+      "title": "RSVP-efterlevnadsrapport",
+      "chooseActivity": "Välj en aktivitet...",
+      "unnamedUser": "Namnlös användare",
+      "showingFirst15": "Visar de första 15. Exportera PDF för full lista.",
+      "remindersHelp": "Systemet stödjer schemalagda RSVP-påminnelser via ett Vercel Cron-jobb som anropar",
+      "remindersHelp2": "Konfigurera miljövariabler för e-postleverantör för att aktivera riktig leverans."
+    },
+    "enrollmentsHelp": "Inskrivningar anger vem som förväntas svara (RSVP) för varje aktivitet. Rapporten och automatiska påminnelser riktar sig endast till deltagare med en aktiv inskrivning som matchar aktivitetens programtyp (och ev. plats).",
+    "locationOptional": "valfritt",
+    "locationExample": "t.ex. Sjuntorp, Vargön, Bråland",
+    "enrollmentSavedTitle": "Inskrivning sparad",
+    "enrollmentSavedBody": "Deltagaren ingår nu i RSVP-efterlevnad för denna programtyp.",
+    "enrollmentSaveErrorTitle": "Kunde inte spara inskrivning",
+    "invitesHelp": "Inbjudningskoder möjliggör kontrollerad personalregistrering för volontärer, personal/coach och styrelse. Koder kan gå ut och kan begränsas i antal användningar.",
+    "inviteList": {
+      "role": "Roll",
+      "uses": "Användningar",
+      "expires": "Går ut",
+      "created": "Skapad",
+      "noExpiry": "Ingen utgång",
+      "empty": "Inga aktiva inbjudningar hittades."
+    },
+    "pdf": {
+      "safeguardingTitle": "Skyddspolicy – bekräftelser",
+      "generated": "Genererad",
+      "name": "Namn",
+      "email": "E-post",
+      "policy": "Policy",
+      "acknowledgedAt": "Bekräftad",
+      "attendanceTitle": "Närvaro / RSVP-efterlevnadsrapport",
+      "activity": "Aktivitet",
+      "start": "Start",
+      "location": "Plats",
+      "rsvp": "RSVP",
+      "respondedAt": "Svarat",
+      "nonRespondersTitle": "Icke-svarande (ingen RSVP)"
+    }
   },
   "staff": {
     "title": "Personalportal",
-    "subtitle": "Verktyg för volontärer, personal och styrelse: aktiviteter, deltagare och rapportering."
+    "subtitle": "Verktyg för volontärer, personal och styrelse: aktiviteter, deltagare och rapportering.",
+    "cards": {
+      "activities": {
+        "title": "Aktiviteter",
+        "description": "Se veckovis/månadsvis schema, platser och passdetaljer. Använd detta för bemanning och uppföljning.",
+        "cta": "Öppna aktiviteter"
+      },
+      "governance": {
+        "title": "Styrning & Barnskydd",
+        "description": "Läs igenom skydd, dataskydd och styrningsdokument. Personal förväntas följa policyn.",
+        "cta": "Skyddspolicy"
+      },
+      "admin": {
+        "title": "Admin",
+        "description": "Adminverktyg för efterlevnadsexport, personalinbjudningar och inskrivningar.",
+        "cta": "Öppna adminpanelen"
+      }
+    }
   },
   "governancePages": {
     "safeguardingTitle": "Barnskyddspolicy",
@@ -268,7 +356,20 @@
     "subject": "Ämne",
     "message": "Meddelande",
     "sending": "Skickar...",
-    "sendMessageButton": "Skicka meddelande"
+    "sendMessageButton": "Skicka meddelande",
+    "toast": {
+      "successTitle": "Meddelande skickat!",
+      "successBody": "Vi återkommer så snart som möjligt.",
+      "errorTitle": "Kunde inte skicka",
+      "errorBody": "Försök igen om en liten stund."
+    },
+    "placeholders": {
+      "firstName": "Anna",
+      "lastName": "Svensson",
+      "email": "anna@example.com",
+      "subject": "Hur kan vi hjälpa?",
+      "message": "Berätta mer om din fråga..."
+    }
   },
   "footer": {
     "followUs": "FÖLJ OSS",
@@ -283,6 +384,217 @@
     "termsOfService": "Användarvillkor",
     "cookiePolicy": "Cookiepolicy",
     "sitemap": "Webbplatskarta",
-    "imprint": "Impressum"
+    "imprint": "Impressum",
+    "addressNote": "(City center – tillfällig plats tills registrerad adress finns)",
+    "viewMapFullScreen": "Visa kartan i helskärm →",
+    "mapAttribution": "© OpenStreetMap-bidragsgivare"
+  },
+  "notFound": {
+    "title": "Oj! Sidan hittades inte",
+    "backHome": "Tillbaka till startsidan"
+  },
+  "programPages": {
+    "schoolSupport": {
+      "whatWeDo": {
+        "1": "Veckovisa läxhjälpspass (små grupper)",
+        "2": "Studieplaner och målspårning",
+        "3": "Vägledning för vårdnadshavare kring rutiner och uppföljning"
+      },
+      "howItConnects": {
+        "1": "Närvarospårning i linje med trygghet och dataskydd",
+        "2": "Mentorfeedback integreras i deltagarens utvecklingsprofil",
+        "3": "Exporterbara sammanfattningar för samverkan med skola (vid samtycke)"
+      }
+    },
+    "football": {
+      "weeklyTraining": {
+        "1": "Åldersindelade pass i Trollhättan och Vänersborg (inkl. Sjuntorp och Vargön)",
+        "2": "Separata pass för tjejer och killar vid behov",
+        "3": "Närvaro- och RSVP-regler (48h svarsfönster) stöds av plattformen"
+      },
+      "intensiveTraining": {
+        "1": "Fredagar 17:00–18:30 för åldrarna 15–20",
+        "2": "Individuellt tekniskt/taktiskt fokus med feedbackloggar",
+        "3": "Passar deltagare som siktar mot högre tävlingsnivåer"
+      }
+    },
+    "mentorship": {
+      "mentorCircles": {
+        "1": "Regelbundna smågruppsträffar med samma mentorteam",
+        "2": "Tydliga trygghetsstandarder och rutiner för rapportering",
+        "3": "Spårning av deltagande och engagemang"
+      },
+      "volunteerCoordination": {
+        "1": "Volontärer kan registrera sig och boka tillgänglighet",
+        "2": "Admins kan bekräfta uppdrag och exportera täckningssammanfattningar",
+        "3": "Digitala policybekräftelser (trygghet och dataskydd)"
+      }
+    },
+    "creative": {
+      "workshops": {
+        "1": "Kreativa workshops (media, konst och projektbaserat lärande)",
+        "2": "Trygg och inkluderande miljö med tydliga uppförandekrav",
+        "3": "Åldersanpassade pass för 8–14 och mixade grupper"
+      },
+      "outcomes": {
+        "1": "Förbättrad självkänsla och kommunikation",
+        "2": "Dokumenterat deltagande och utvecklingsanteckningar",
+        "3": "Exporterbara sammanfattningar för partners (vid samtycke)"
+      }
+    },
+    "socialIntegration": {
+      "fundableTitle": "Programbeskrivning (bidrags- och sponsorspråk)",
+      "fundableBody": "Arbetssättet stärker skyddsfaktorer som konsekvent vuxenstöd, gemenskap och strukturerade rutiner, och bygger broar mellan familjer, skolor, föreningar och lokalsamhället.",
+      "outcomesMeasuredTitle": "Resultat vi mäter",
+      "outcomesMeasured": {
+        "1": "Stabilt deltagande och retention över tid.",
+        "2": "Ökad social tillhörighet och kamratkontakt.",
+        "3": "Stärkt svensk-språklig trygghet i praktiska sammanhang.",
+        "4": "Starkare föräldraengagemang och stödnätverk."
+      },
+      "whoForTitle": "För vem",
+      "whoForBody": "Unga 7–20 år i Trollhättan och Vänersborg, med fokus på unga som är nya i Sverige eller från under-resurserade communities som söker trygga, strukturerade vägar in i idrott, kreativitet och mentorskap."
+    }
+  },
+  "governanceContent": {
+    "badge": "Styrningspolicy",
+    "safeguarding": {
+      "lead": "Säkerheten och välmåendet för varje ung person i våra verksamheter är högsta prioritet. Policyn beskriver vårt åtagande att skapa en trygg miljö för alla deltagare.",
+      "policies": {
+        "zeroTolerance": {
+          "title": "Nolltolerans",
+          "desc": "Vi har nolltolerans mot övergrepp, försummelse, exploatering eller trakasserier av något slag."
+        },
+        "backgroundChecks": {
+          "title": "Bakgrundskontroller",
+          "desc": "All personal, volontärer och tränare genomgår obligatoriska bakgrundskontroller innan arbete med barn."
+        },
+        "codeOfConduct": {
+          "title": "Uppförandekod",
+          "desc": "Tydliga beteendestandarder för alla vuxna som möter unga i våra program."
+        },
+        "reporting": {
+          "title": "Rutiner för rapportering",
+          "desc": "Konfidentiella och tillgängliga kanaler för att rapportera trygghetsärenden."
+        }
+      },
+      "commitmentTitle": "Vårt åtagande",
+      "commitmentBody": "07–20 Ungdomsutvecklingsinitiativ är engagerat i att skydda och främja barns och ungas välfärd. Vi förväntar oss att all personal, volontärer, tränare och partnerorganisationer delar detta ansvar.",
+      "principlesTitle": "Nyckelprinciper",
+      "principles": {
+        "1": "Barnets bästa är alltid överordnat",
+        "2": "Alla barn har rätt till skydd från övergrepp och exploatering",
+        "3": "Trygghet är allas ansvar",
+        "4": "Vi samarbetar med familjer och lokalsamhälle",
+        "5": "Vi arbetar transparent och ansvarstagande"
+      },
+      "reportingTitle": "Rapportera oro",
+      "reportingBody": "Om du har trygghetsrelaterad oro, kontakta vår utsedda ansvariga omedelbart. Alla rapporter hanteras konfidentiellt och i enlighet med svensk lag och god praxis.",
+      "contactTitle": "Kontakt för barnskydd",
+      "contactEmail": "E-post: safeguarding@07-20.org",
+      "contactNote": "All personal och volontärer måste bekräfta denna policy vid start.",
+      "ackTitle": "Policybekräftelse",
+      "ackBody": "All personal och volontärer måste digitalt bekräfta och signera policyn vid kontoskapande. Signerade bekräftelser kan exporteras som PDF för efterlevnad."
+    },
+    "dataProtection": {
+      "lead": "Vi är engagerade i GDPR-kompatibelt dataskydd. Här förklarar vi vad vi samlar in, hur vi använder det och dina rättigheter.",
+      "categories": {
+        "collect": {
+          "title": "Vad vi samlar in",
+          "desc": "Personuppgifter som behövs för deltagande, inklusive namn, kontaktuppgifter och utvecklingsanteckningar."
+        },
+        "use": {
+          "title": "Hur vi använder det",
+          "desc": "Data används endast för programgenomförande, uppföljning och rapportering till intressenter med korrekt samtycke."
+        },
+        "retention": {
+          "title": "Lagringstider",
+          "desc": "Vi sparar data bara så länge det behövs, med tydliga gallringsrutiner och radering."
+        },
+        "rights": {
+          "title": "Dina rättigheter",
+          "desc": "Du kan få tillgång till, rätta, exportera eller radera dina personuppgifter och när som helst återkalla samtycke."
+        }
+      },
+      "consentTitle": "Samtyckeshantering",
+      "consentBody": "Alla registreringsformulär inkluderar GDPR-samtycke. Samtycke kan återkallas via kontoinställningar eller genom att kontakta DPO.",
+      "exerciseTitle": "Utöva dina rättigheter",
+      "exerciseBody": "För dataskyddsfrågor eller för att utöva dina rättigheter:",
+      "dpoTitle": "Dataskyddsombud",
+      "dpoBody": "Kontakta vårt dataskyddsombud för dataskyddsfrågor.",
+      "dpoEmail": "E-post: dpo@07-20.org",
+      "accountToolsTitle": "Verktyg i kontot",
+      "accountToolsBody": "Registrerade användare kan hantera sin data via kontot. Följande alternativ finns:",
+      "actions": {
+        "viewData": "Visa min data",
+        "exportData": "Exportera min data",
+        "deleteAccount": "Radera mitt konto"
+      },
+      "note": "Obs: Inloggning krävs för att använda dessa funktioner. Begäran hanteras inom 30 dagar."
+    },
+    "financial": {
+      "lead": "Vi är engagerade i full transparens kring hur vi tar emot och fördelar medel. Våra rutiner uppfyller krav från kommuner, Vinnova och andra intressenter.",
+      "sections": {
+        "fundingSources": "Finansieringskällor",
+        "fundAllocation": "Medelsfördelning",
+        "auditPolicy": "Revisionspolicy",
+        "antiFraud": "Förebyggande mot oegentligheter"
+      },
+      "bodies": {
+        "fundingSources": "Vi dokumenterar var finansiering kommer ifrån (kommuner, bidrag, partners) och publicerar sammanfattningar för intressenter.",
+        "fundAllocation": "Vi följer och rapporterar hur medel fördelas mellan program, personal, trygghet och drift.",
+        "auditPolicy": "Våra räkenskaper granskas årligen av oberoende revisor. Revisionsrapporter kan begäras av intressenter.",
+        "antiFraud": "Vi använder kontroller för att motverka missbruk, inklusive attestflöden och transparent dokumentation."
+      },
+      "reportsTitle": "Årsrapporter",
+      "reportsBody": "Våra räkenskaper granskas årligen av oberoende revisor. Revisionsrapporter görs tillgängliga för intressenter och kan begäras via vårt kontaktformulär.",
+      "archiveTitle": "Arkiv för årsrapporter",
+      "actions": {
+        "viewReports": "Visa rapporter",
+        "accessArchive": "Se tidigare års finansiella rapporter"
+      }
+    },
+    "coi": {
+      "lead": "Vi upprätthåller etiska standarder och opartiskhet i all verksamhet. Policyn säkerställer transparens och ansvar i beslutsprocesser.",
+      "sections": {
+        "disclosureTitle": "Krav på redovisning",
+        "disclosureBody": "Alla styrelsemedlemmar, personal och nyckelpartners ska redovisa faktiska, potentiella eller upplevda jäv vid start och när nya uppstår.",
+        "recusalTitle": "Jävsrutiner",
+        "recusalBody": "När jäv identifieras ska personen avstå från relevanta beslut och diskussioner.",
+        "internalProcessTitle": "Intern process",
+        "internalProcessBody": "Personal och styrelse kan lämna jävsanmälningar via internportalen. Alla ärenden granskas av en admin-begränsad panel.",
+        "transparencyTitle": "Transparensrapportering",
+        "transparencyBody": "Vi för ett register över anmälda jävsförhållanden. Sammanfattningar ingår i årlig styrningsrapport."
+      },
+      "proceduresTitle": "När ett jävsförhållande identifieras",
+      "proceduresLead": "Följande rutiner gäller:",
+      "procedures": {
+        "1": "Anmäl jäv så snart det identifieras.",
+        "2": "Registrera anmälan i jävsregistret.",
+        "3": "Avstå från beslut där jäv föreligger.",
+        "4": "Följ upp och bekräfta efterlevnad vid granskningar."
+      }
+    }
+  },
+  "ui": {
+    "more": "Mer",
+    "breadcrumb": {
+      "ariaLabel": "Brödsmulor"
+    },
+    "pagination": {
+      "previous": "Gå till föregående sida",
+      "next": "Gå till nästa sida",
+      "previousLabel": "Föregående",
+      "nextLabel": "Nästa",
+      "morePages": "Fler sidor"
+    },
+    "sidebar": {
+      "toggle": "Visa/dölj sidofält"
+    },
+    "close": "Stäng",
+    "carousel": {
+      "previousSlide": "Föregående bild",
+      "nextSlide": "Nästa bild"
+    }
   }
 }

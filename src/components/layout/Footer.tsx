@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { LocalizedLink as Link } from "@/components/LocalizedLink";
+import { useLocation } from "react-router-dom";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Facebook,
@@ -17,6 +19,7 @@ import {
   FileText,
   Scale,
 } from "lucide-react";
+import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "@/i18n";
 
 const footerLinks = {
   programs: [
@@ -40,15 +43,59 @@ const footerLinks = {
     { name: "nav.contact", href: "/contact" },
     { name: "nav.staffPortal", href: "/staff" },
   ],
-};
+} as const;
+
+function normalizePath(pathname: string) {
+  const path = pathname.split("?")[0].split("#")[0];
+  const trimmed = path.length > 1 ? path.replace(/\/+$/, "") : path;
+
+  const parts = trimmed.split("/").filter(Boolean);
+  const maybeLang = parts[0] as SupportedLanguage | undefined;
+
+  if (maybeLang && SUPPORTED_LANGUAGES.includes(maybeLang)) {
+    const rest = parts.slice(1).join("/");
+    return rest ? `/${rest}` : "/";
+  }
+
+  return trimmed || "/";
+}
+
+function isRouteActive(currentPath: string, href: string) {
+  if (!href || href === "#") return false;
+  if (href === "/") return currentPath === "/";
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+}
 
 export function Footer() {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  const currentPath = useMemo(
+    () => normalizePath(location.pathname),
+    [location.pathname],
+  );
+
+  const isActive = (href: string) => isRouteActive(currentPath, href);
+
+  const footerLinkClass = (active: boolean) =>
+    [
+      "text-sm transition-colors",
+      active
+        ? "text-foreground font-medium"
+        : "text-muted-foreground hover:text-foreground",
+    ].join(" ");
+
+  const footerLinkRowClass = (active: boolean) =>
+    [
+      "flex items-center gap-2 text-sm transition-colors",
+      active
+        ? "text-foreground font-medium"
+        : "text-muted-foreground hover:text-foreground",
+    ].join(" ");
 
   return (
     <footer className="bg-background border-t">
       <div className="section-container">
-        {/* Main footer content */}
         <div className="grid grid-cols-1 gap-8 py-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand & Description */}
           <div className="lg:col-span-2">
@@ -65,23 +112,28 @@ export function Footer() {
                 </span>
               </div>
             </Link>
+
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               {t("app.tagline")}
             </p>
+
             <div className="mt-6 space-y-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span>Trollhättan, Sweden</span>
+                <span>{t("contact.locationValue")}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                <a href="mailto:contact@07-20.org" className="hover:text-foreground">
+                <a
+                  href="mailto:contact@07-20.org"
+                  className="hover:text-foreground"
+                >
                   contact@07-20.org
                 </a>
               </div>
             </div>
 
-            {/* FOLLOW US Section */}
+            {/* FOLLOW US */}
             <div className="mt-8">
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
                 {t("footer.followUs")}
@@ -114,10 +166,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.programs.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
+                  <Link to={link.href} className={footerLinkRowClass(isActive(link.href))}>
                     {link.icon && <link.icon className="h-4 w-4" />}
                     {t(link.name)}
                   </Link>
@@ -134,10 +183,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.governance.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
+                  <Link to={link.href} className={footerLinkRowClass(isActive(link.href))}>
                     {link.icon && <link.icon className="h-4 w-4" />}
                     {t(link.name)}
                   </Link>
@@ -154,10 +200,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.organization.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
+                  <Link to={link.href} className={footerLinkClass(isActive(link.href))}>
                     {t(link.name)}
                   </Link>
                 </li>
@@ -170,10 +213,10 @@ export function Footer() {
                 <MapPin className="h-5 w-5 mt-0.5 text-primary" />
                 <div>
                   <p className="text-sm font-medium text-foreground">
-                    Trollhättan, Sweden
+                    {t("contact.locationValue")}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
-                    (City center - temporary location until registered address)
+                    {t("footer.addressNote")}
                   </p>
                 </div>
               </div>
@@ -183,66 +226,43 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-xs font-medium text-primary hover:underline"
               >
-                View map in full screen →
+                {t("footer.viewMapFullScreen")}
               </a>
               <p className="text-xs text-muted-foreground pt-3 border-t">
-                @ OpenStreetMap contributors
+                {t("footer.mapAttribution")}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
         <div className="border-t"></div>
 
-        {/* Bottom footer */}
         <div className="flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>
-              {t("footer.copyright")}
-            </span>
+            <span>{t("footer.copyright")}</span>
             <Heart className="h-3 w-3 text-red-500" />
           </div>
 
-          {/* Registration info */}
           <div className="text-center text-sm text-muted-foreground md:text-right">
-            <p>Non-Profit Registration: 12345-2023</p>
-            <p className="mt-1">
-              Made with passion for youth development in Sweden
-            </p>
+            <p>{t("footer.nonProfitRegistration")}</p>
+            <p className="mt-1">{t("footer.madeWithPassion")}</p>
           </div>
         </div>
 
-        {/* Legal links row */}
         <div className="flex flex-wrap justify-center gap-6 border-t py-6 text-xs text-muted-foreground">
-          <Link
-            to="/privacy"
-            className="hover:text-foreground transition-colors"
-          >
+          <Link to="/privacy" className={isActive("/privacy") ? "text-foreground font-medium" : "hover:text-foreground transition-colors"}>
             {t("footer.privacyPolicy")}
           </Link>
-          <Link 
-            to="/terms" 
-            className="hover:text-foreground transition-colors"
-          >
+          <Link to="/terms" className={isActive("/terms") ? "text-foreground font-medium" : "hover:text-foreground transition-colors"}>
             {t("footer.termsOfService")}
           </Link>
-          <Link
-            to="/cookies"
-            className="hover:text-foreground transition-colors"
-          >
+          <Link to="/cookies" className={isActive("/cookies") ? "text-foreground font-medium" : "hover:text-foreground transition-colors"}>
             {t("footer.cookiePolicy")}
           </Link>
-          <Link
-            to="/sitemap"
-            className="hover:text-foreground transition-colors"
-          >
+          <Link to="/sitemap" className={isActive("/sitemap") ? "text-foreground font-medium" : "hover:text-foreground transition-colors"}>
             {t("footer.sitemap")}
           </Link>
-          <Link
-            to="/imprint"
-            className="hover:text-foreground transition-colors"
-          >
+          <Link to="/imprint" className={isActive("/imprint") ? "text-foreground font-medium" : "hover:text-foreground transition-colors"}>
             {t("footer.imprint")}
           </Link>
         </div>

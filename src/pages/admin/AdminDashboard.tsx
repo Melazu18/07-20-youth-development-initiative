@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { FileDown, RefreshCw, Users, Calendar, KeyRound } from "lucide-react";
@@ -19,6 +20,7 @@ import { toast } from "@/components/ui/use-toast";
 
 
 function InviteList() {
+  const { t } = useTranslation();
   const { data, isFetching, refetch } = useQuery({
     queryKey: ["admin", "staff-invites"],
     queryFn: async () => {
@@ -36,7 +38,7 @@ function InviteList() {
     <div className="space-y-3">
       <div className="flex items-center gap-2">
         <Button type="button" variant="outline" size="sm" onClick={() => refetch()} disabled={isFetching}>
-          <RefreshCw className={"h-4 w-4 " + (isFetching ? "animate-spin" : "")} /> Refresh
+          <RefreshCw className={"h-4 w-4 " + (isFetching ? "animate-spin" : "")} /> {t("admin.refresh")}
         </Button>
       </div>
 
@@ -44,10 +46,10 @@ function InviteList() {
         <table className="min-w-full text-sm">
           <thead className="bg-secondary/30 text-left">
             <tr>
-              <th className="px-3 py-2">Role</th>
-              <th className="px-3 py-2">Uses</th>
-              <th className="px-3 py-2">Expires</th>
-              <th className="px-3 py-2">Created</th>
+              <th className="px-3 py-2">{t("admin.inviteList.role")}</th>
+              <th className="px-3 py-2">{t("admin.inviteList.uses")}</th>
+              <th className="px-3 py-2">{t("admin.inviteList.expires")}</th>
+              <th className="px-3 py-2">{t("admin.inviteList.created")}</th>
             </tr>
           </thead>
           <tbody>
@@ -55,14 +57,14 @@ function InviteList() {
               <tr key={idx} className="border-t border-border">
                 <td className="px-3 py-2">{row.role}</td>
                 <td className="px-3 py-2">{row.uses} / {row.max_uses}</td>
-                <td className="px-3 py-2">{row.expires_at ? format(new Date(row.expires_at), "yyyy-MM-dd") : "No expiry"}</td>
+                <td className="px-3 py-2">{row.expires_at ? format(new Date(row.expires_at), "yyyy-MM-dd") : t("admin.inviteList.noExpiry")}</td>
                 <td className="px-3 py-2">{row.created_at ? format(new Date(row.created_at), "yyyy-MM-dd") : ""}</td>
               </tr>
             ))}
             {(!data || data.length === 0) ? (
               <tr>
                 <td className="px-3 py-6 text-muted-foreground" colSpan={4}>
-                  No active invites found.
+                  {t("admin.inviteList.empty")}
                 </td>
               </tr>
             ) : null}
@@ -81,6 +83,7 @@ function InviteList() {
  * - Attendance/RVSP compliance overview by activity (non-responders highlighted)
  */
 export default function AdminDashboard() {
+  const { t } = useTranslation();
   const { profile } = useAuth();
   const [selectedActivityId, setSelectedActivityId] = useState<string>("");
   const [enrollmentUserId, setEnrollmentUserId] = useState<string>("");
@@ -255,13 +258,13 @@ export default function AdminDashboard() {
   const downloadAcknowledgementsPdf = () => {
     const doc = new jsPDF();
     doc.setFontSize(16);
-    doc.text("Safeguarding Policy Acknowledgements", 14, 18);
+    doc.text(t("admin.pdf.safeguardingTitle"), 14, 18);
     doc.setFontSize(10);
-    doc.text(`Generated: ${format(new Date(), "yyyy-MM-dd HH:mm")}`, 14, 25);
+    doc.text(`${t("admin.pdf.generated")}: ${format(new Date(), "yyyy-MM-dd HH:mm")}`, 14, 25);
 
     autoTable(doc, {
       startY: 30,
-      head: [["Name", "Email", "Policy", "Acknowledged at"]],
+      head: [[t("admin.pdf.name"), t("admin.pdf.email"), t("admin.pdf.policy"), t("admin.pdf.acknowledgedAt")]],
       body: (acknowledgements ?? []).map((a: any) => [
         a.user_full_name ?? "",
         a.user_email ?? "",
@@ -281,13 +284,13 @@ export default function AdminDashboard() {
 
     const doc = new jsPDF();
     doc.setFontSize(16);
-    doc.text("Attendance / RSVP Compliance Report", 14, 18);
+    doc.text(t("admin.pdf.attendanceTitle"), 14, 18);
     doc.setFontSize(10);
 
     const subtitle = [
-      activity?.title ? `Activity: ${activity.title}` : "Activity",
-      activity?.starts_at ? `Start: ${format(new Date(activity.starts_at), "yyyy-MM-dd HH:mm")}` : "",
-      activity?.location ? `Location: ${activity.location}` : "",
+      activity?.title ? `${t("admin.pdf.activity")}: ${activity.title}` : t("admin.pdf.activity"),
+      activity?.starts_at ? `${t("admin.pdf.start")}: ${format(new Date(activity.starts_at), "yyyy-MM-dd HH:mm")}` : "",
+      activity?.location ? `${t("admin.pdf.location")}: ${activity.location}` : "",
     ]
       .filter(Boolean)
       .join("  |  ");
@@ -296,7 +299,7 @@ export default function AdminDashboard() {
 
     autoTable(doc, {
       startY: 32,
-      head: [["Name", "Email", "RSVP", "Responded at"]],
+      head: [[t("admin.pdf.name"), t("admin.pdf.email"), t("admin.pdf.rsvp"), t("admin.pdf.respondedAt")]],
       body: responders.map((p: any) => [
         p.full_name ?? "",
         p.email ?? "",
@@ -309,11 +312,11 @@ export default function AdminDashboard() {
 
     const afterY = (doc as any).lastAutoTable?.finalY ?? 32;
     doc.setFontSize(12);
-    doc.text("Non-responders (no RSVP)", 14, afterY + 10);
+    doc.text(t("admin.pdf.nonRespondersTitle"), 14, afterY + 10);
 
     autoTable(doc, {
       startY: afterY + 14,
-      head: [["Name", "Email"]],
+      head: [[t("admin.pdf.name"), t("admin.pdf.email")]],
       body: nonResponders.map((p: any) => [p.full_name ?? "", p.email ?? ""]),
       styles: { fontSize: 9 },
       headStyles: { fontStyle: "bold" },
@@ -337,9 +340,9 @@ export default function AdminDashboard() {
       );
       if (error) throw error;
       setEnrollmentLocation("");
-      toast({ title: "Enrollment saved", description: "The participant is now included in RSVP compliance for this program type." });
+      toast({ title: t("admin.enrollmentSavedTitle"), description: t("admin.enrollmentSavedBody") });
     } catch (err: any) {
-      toast({ title: "Could not save enrollment", description: err?.message ?? "Please try again.", variant: "destructive" });
+      toast({ title: t("admin.enrollmentSaveErrorTitle"), description: err?.message ?? t("common.tryAgain"), variant: "destructive" });
     } finally {
       setEnrollmentSaving(false);
     }
@@ -350,9 +353,9 @@ export default function AdminDashboard() {
       <div className="container mx-auto px-4 py-10">
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div>
-            <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+            <h1 className="text-3xl font-bold">{t("admin.title")}</h1>
             <p className="text-muted-foreground">
-              Exports and compliance oversight (safeguarding acknowledgements, RSVP non-responders).
+              {t("admin.subtitle")}
             </p>
           </div>
         </div>
@@ -360,41 +363,41 @@ export default function AdminDashboard() {
         <Tabs defaultValue="ack" className="mt-8">
           <TabsList>
             <TabsTrigger value="ack" className="flex items-center gap-2">
-              <Users className="h-4 w-4" /> Safeguarding acknowledgements
+              <Users className="h-4 w-4" /> {t("admin.tabs.ack")}
             </TabsTrigger>
             <TabsTrigger value="invites" className="flex items-center gap-2">
-              <KeyRound className="h-4 w-4" /> Staff invite codes
+              <KeyRound className="h-4 w-4" /> {t("admin.tabs.invites")}
             </TabsTrigger>
             <TabsTrigger value="attendance" className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" /> Attendance / RSVP compliance
+              <Calendar className="h-4 w-4" /> {t("admin.tabs.attendance")}
             </TabsTrigger>
             <TabsTrigger value="enrollments" className="flex items-center gap-2">
-              <Users className="h-4 w-4" /> Enrollments
+              <Users className="h-4 w-4" /> {t("admin.tabs.enrollments")}
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="ack" className="mt-6">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between gap-3">
-                <CardTitle>Export acknowledgements</CardTitle>
+                <CardTitle>{t("admin.ack.title")}</CardTitle>
                 <div className="flex items-center gap-2">
                   <Button variant="outline" onClick={() => refetchAck()} disabled={ackLoading}>
-                    <RefreshCw className="h-4 w-4 mr-2" /> Refresh
+                    <RefreshCw className="h-4 w-4 mr-2" /> {t("admin.refresh")}
                   </Button>
                   <Button variant="outline" onClick={downloadAcknowledgementsCsv} disabled={!acknowledgements?.length}>
-                    <FileDown className="h-4 w-4 mr-2" /> CSV
+                    <FileDown className="h-4 w-4 mr-2" /> {t("admin.ack.csv")}
                   </Button>
                   <Button onClick={downloadAcknowledgementsPdf} disabled={!acknowledgements?.length}>
-                    <FileDown className="h-4 w-4 mr-2" /> PDF
+                    <FileDown className="h-4 w-4 mr-2" /> {t("admin.ack.pdf")}
                   </Button>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  This list is generated from signed digital acknowledgements stored in the backend.
+                  {t("admin.ack.description")}
                 </p>
                 <div className="mt-4 text-sm">
-                  Total acknowledgements: <span className="font-semibold">{acknowledgements?.length ?? 0}</span>
+                  {t("admin.ack.total")}: <span className="font-semibold">{acknowledgements?.length ?? 0}</span>
                 </div>
               </CardContent>
             </Card>
@@ -403,23 +406,23 @@ export default function AdminDashboard() {
           <TabsContent value="attendance" className="mt-6">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between gap-3">
-                <CardTitle>RSVP compliance report</CardTitle>
+                <CardTitle>{t("admin.attendance.title")}</CardTitle>
                 <div className="flex items-center gap-2">
                   <Button variant="outline" onClick={() => refetchRsvps()} disabled={rsvpLoading || !selectedActivityId}>
-                    <RefreshCw className="h-4 w-4 mr-2" /> Refresh
+                    <RefreshCw className="h-4 w-4 mr-2" /> {t("admin.refresh")}
                   </Button>
                   <Button onClick={downloadAttendancePdf} disabled={!selectedActivityId}>
-                    <FileDown className="h-4 w-4 mr-2" /> PDF
+                    <FileDown className="h-4 w-4 mr-2" /> {t("admin.ack.pdf")}
                   </Button>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="max-w-xl">
-                  <label className="text-sm font-medium">Select activity</label>
+                  <label className="text-sm font-medium">{t("admin.selectActivity")}</label>
                   <div className="mt-2">
                     <Select value={selectedActivityId} onValueChange={setSelectedActivityId}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Choose an activity..." />
+                        <SelectValue placeholder={t("admin.attendance.chooseActivity")} />
                       </SelectTrigger>
                       <SelectContent>
                         {(activities ?? []).map((a: any) => (
@@ -434,35 +437,35 @@ export default function AdminDashboard() {
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <Card>
                       <CardContent className="pt-6">
-                        <div className="text-sm text-muted-foreground">Expected responders</div>
+                        <div className="text-sm text-muted-foreground">{t("admin.expectedResponders")}</div>
                         <div className="text-2xl font-bold">{expectedResponders.length}</div>
                       </CardContent>
                     </Card>
                     <Card>
                       <CardContent className="pt-6">
-                        <div className="text-sm text-muted-foreground">Responded</div>
+                        <div className="text-sm text-muted-foreground">{t("admin.responded")}</div>
                         <div className="text-2xl font-bold">{responders.length}</div>
                       </CardContent>
                     </Card>
                     <Card>
                       <CardContent className="pt-6">
-                        <div className="text-sm text-muted-foreground">Non-responders</div>
+                        <div className="text-sm text-muted-foreground">{t("admin.nonResponders")}</div>
                         <div className="text-2xl font-bold">{nonResponders.length}</div>
                       </CardContent>
                     </Card>
                   </div>
 
                   <div className="mt-6">
-                    <div className="text-sm font-semibold">Non-responders</div>
+                    <div className="text-sm font-semibold">{t("admin.nonResponders")}</div>
                     <ul className="mt-2 space-y-2 text-sm">
                       {nonResponders.slice(0, 15).map((p: any) => (
                         <li key={p.id} className="flex items-center justify-between border rounded-md p-2">
-                          <span>{p.full_name ?? "Unnamed user"}</span>
+                          <span>{p.full_name ?? t("admin.attendance.unnamedUser")}</span>
                           <span className="text-muted-foreground">{p.email ?? ""}</span>
                         </li>
                       ))}
                       {nonResponders.length > 15 && (
-                        <li className="text-xs text-muted-foreground">Showing first 15. Export PDF for full list.</li>
+                        <li className="text-xs text-muted-foreground">{t("admin.attendance.showingFirst15")}</li>
                       )}
                     </ul>
                   </div>
@@ -472,12 +475,11 @@ export default function AdminDashboard() {
 
             <Card className="mt-6">
               <CardHeader>
-                <CardTitle>Automated reminders</CardTitle>
+                <CardTitle>{t("admin.automatedReminders")}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  The system supports scheduled RSVP reminder emails via a Vercel Cron job calling <code className="px-1">/api/cron/rsvp-reminders</code>.
-                  Configure email provider environment variables to enable real delivery.
+                  {t("admin.attendance.remindersHelp")} <code className="px-1">/api/cron/rsvp-reminders</code>. {t("admin.attendance.remindersHelp2")}
                 </p>
               </CardContent>
             </Card>
@@ -486,20 +488,20 @@ export default function AdminDashboard() {
           <TabsContent value="enrollments" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle>Participant enrollments (expected RSVPs)</CardTitle>
+                <CardTitle>{t("admin.participantEnrollments")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <p className="text-sm text-muted-foreground">
-                  Enrollments define who is expected to RSVP for each activity. The RSVP compliance report and reminder automation
+                  {t("admin.tabs.enrollments")} define who is expected to RSVP for each activity. The RSVP compliance report and reminder automation
                   only targets participants who have an active enrollment matching the activity’s program type (and optional location).
                 </p>
 
                 <div className="grid gap-4 md:grid-cols-3">
                   <div className="space-y-2">
-                    <Label>Participant</Label>
+                    <Label>{t("admin.selectParticipant")}</Label>
                     <Select value={enrollmentUserId} onValueChange={setEnrollmentUserId}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a participant" />
+                        <SelectValue placeholder={t("admin.selectParticipant")} />
                       </SelectTrigger>
                       <SelectContent>
                         {(profiles ?? [])
@@ -515,20 +517,20 @@ export default function AdminDashboard() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Program type</Label>
+                    <Label>{t("admin.programType")}</Label>
                     <Select value={enrollmentProgramType} onValueChange={setEnrollmentProgramType}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a program type" />
+                        <SelectValue placeholder={t("admin.programType")} />
                       </SelectTrigger>
                       <SelectContent>
                         {[
-                          "School Support",
-                          "Football Development",
-                          "Mentorship",
-                          "Creative Skills",
-                        ].map((t) => (
-                          <SelectItem key={t} value={t}>
-                            {t}
+                          { value: "School Support", label: t("programTypes.schoolSupport") },
+                          { value: "Football Development", label: t("programTypes.footballDevelopment") },
+                          { value: "Mentorship", label: t("programTypes.mentorship") },
+                          { value: "Creative Skills", label: t("programTypes.creativeSkills") },
+                        ].map((opt) => (
+                          <SelectItem key={opt.value} value={opt.value}>
+                            {opt.label}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -536,21 +538,21 @@ export default function AdminDashboard() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Location (optional)</Label>
+                    <Label>{t("admin.location")} ({t("admin.locationOptional")})</Label>
                     <Input
                       value={enrollmentLocation}
                       onChange={(e) => setEnrollmentLocation(e.target.value)}
-                      placeholder="e.g. Sjuntorp, Vargön, Bråland"
+                      placeholder={t("admin.locationExample")}
                     />
                     <div className="text-xs text-muted-foreground">
-                      Leave blank to match all locations for this program type.
+                      {t("admin.locationHint")}
                     </div>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <Button onClick={saveEnrollment} disabled={!enrollmentUserId || enrollmentSaving}>
-                    {enrollmentSaving ? "Saving…" : "Save enrollment"}
+                    {enrollmentSaving ? t("common.loading") : t("admin.saveEnrollment")}
                   </Button>
                 </div>
               </CardContent>
@@ -561,32 +563,31 @@ export default function AdminDashboard() {
             <div className="grid gap-6 lg:grid-cols-2">
               <Card>
                 <CardHeader>
-                  <CardTitle>Generate an invite code</CardTitle>
+                  <CardTitle>{t("admin.generateInvite")}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground">
-                    Invite codes enable controlled staff signup for volunteers, workers/coaches, and board members.
-                    Codes can expire and can be limited to a number of uses.
+                    {t("admin.invitesHelp")}
                   </p>
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <Label>Role</Label>
+                      <Label>{t("admin.invites.role")}</Label>
                       <Select value={inviteRole} onValueChange={(v) => setInviteRole(v)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select role" />
+                          <SelectValue placeholder={t("admin.invites.role")} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="volunteer">Volunteer</SelectItem>
-                          <SelectItem value="staff">Worker / Coach</SelectItem>
-                          <SelectItem value="board">Board member</SelectItem>
-                          <SelectItem value="admin">Administrator</SelectItem>
+                          <SelectItem value="volunteer">{t("admin.roles.volunteer")}</SelectItem>
+                          <SelectItem value="staff">{t("admin.roles.staff")}</SelectItem>
+                          <SelectItem value="board">{t("admin.roles.board")}</SelectItem>
+                          <SelectItem value="admin">{t("admin.roles.admin")}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="inviteMaxUses">Max uses</Label>
+                      <Label htmlFor="inviteMaxUses">{t("admin.invites.maxUses")}</Label>
                       <Input
                         id="inviteMaxUses"
                         type="number"
@@ -597,7 +598,7 @@ export default function AdminDashboard() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="inviteExpiresDays">Expires in (days)</Label>
+                      <Label htmlFor="inviteExpiresDays">{t("admin.invites.expiresDays")}</Label>
                       <Input
                         id="inviteExpiresDays"
                         type="number"
@@ -622,21 +623,21 @@ export default function AdminDashboard() {
                         if (error) throw error;
                         const code = (data as any)?.[0]?.invite_code;
                         setGeneratedInviteCode(code ?? "");
-                        toast({ title: "Invite code created", description: "Share the code securely with the intended recipient." });
+                        toast({ title: t("admin.inviteCodeCreated"), description: t("admin.shareSecurely") });
                       } catch (err: any) {
-                        toast({ title: "Could not create invite", description: err?.message ?? "Please try again.", variant: "destructive" });
+                        toast({ title: t("admin.invites.createErrorTitle"), description: err?.message ?? t("common.tryAgain"), variant: "destructive" });
                       } finally {
                         setInviteGenerating(false);
                       }
                     }}
                     disabled={inviteGenerating}
                   >
-                    {inviteGenerating ? "Generating" : "Generate code"}
+                    {inviteGenerating ? t("admin.invites.generating") : t("admin.generateInvite")}
                   </Button>
 
                   {generatedInviteCode ? (
                     <div className="rounded-lg border border-border bg-secondary/30 p-4">
-                      <div className="text-sm font-medium text-foreground">Invite code</div>
+                      <div className="text-sm font-medium text-foreground">{t("admin.inviteCode")}</div>
                       <div className="mt-2 font-mono text-lg">{generatedInviteCode}</div>
                       <div className="mt-3 flex gap-2">
                         <Button
@@ -644,14 +645,14 @@ export default function AdminDashboard() {
                           variant="outline"
                           onClick={async () => {
                             await navigator.clipboard.writeText(generatedInviteCode);
-                            toast({ title: "Copied", description: "Invite code copied to clipboard." });
+                            toast({ title: t("common.copied"), description: t("admin.invites.copiedBody") });
                           }}
                         >
-                          Copy
+                          {t("admin.invites.copy")}
                         </Button>
                       </div>
                       <p className="mt-3 text-xs text-muted-foreground">
-                        The recipient should go to <strong>/auth/staff</strong> and choose <strong>Sign up with invite code</strong>.
+                        {t("admin.invites.redeemHint")} <strong>/auth/staff</strong> {t("admin.invites.redeemHint2")}
                       </p>
                     </div>
                   ) : null}
@@ -660,11 +661,11 @@ export default function AdminDashboard() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Active invites</CardTitle>
+                  <CardTitle>{t("admin.activeInvites")}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground">
-                    This list does not reveal the invite code itself (only admin-created metadata). Generate a new code if needed.
+                    {t("admin.invites.activeListHelp")}
                   </p>
                   <InviteList />
                 </CardContent>
@@ -673,23 +674,23 @@ export default function AdminDashboard() {
 
             <Card className="mt-6">
               <CardHeader className="flex flex-row items-center justify-between gap-3">
-                <CardTitle>Invite usage audit log</CardTitle>
+                <CardTitle>{t("admin.inviteUsageAudit")}</CardTitle>
                 <Button type="button" variant="outline" size="sm" onClick={() => refetchInviteAudit()} disabled={inviteAuditLoading}>
-                  <RefreshCw className={"h-4 w-4 " + (inviteAuditLoading ? "animate-spin" : "")} /> Refresh
+                  <RefreshCw className={"h-4 w-4 " + (inviteAuditLoading ? "animate-spin" : "")} /> {t("admin.refresh")}
                 </Button>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Immutable record of staff invite usage. This supports governance audits and sponsor/municipality review.
+                  {t("admin.invites.auditHelp")}
                 </p>
 
                 <div className="mt-4 overflow-x-auto rounded-lg border border-border">
                   <table className="min-w-full text-sm">
                     <thead className="bg-secondary/30 text-left">
                       <tr>
-                        <th className="px-3 py-2">Used at</th>
-                        <th className="px-3 py-2">Used by</th>
-                        <th className="px-3 py-2">Assigned role</th>
+                        <th className="px-3 py-2">{t("admin.usedAt")}</th>
+                        <th className="px-3 py-2">{t("admin.usedBy")}</th>
+                        <th className="px-3 py-2">{t("admin.assignedRole")}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -699,7 +700,7 @@ export default function AdminDashboard() {
                           <tr key={idx} className="border-t border-border">
                             <td className="px-3 py-2">{row.used_at ? format(new Date(row.used_at), "yyyy-MM-dd HH:mm") : ""}</td>
                             <td className="px-3 py-2">
-                              <div className="font-medium">{who?.full_name ?? "Unknown"}</div>
+                              <div className="font-medium">{who?.full_name ?? t("common.unknown")}</div>
                               <div className="text-muted-foreground">{who?.email ?? row.used_by}</div>
                             </td>
                             <td className="px-3 py-2">{row.assigned_role}</td>
@@ -710,7 +711,7 @@ export default function AdminDashboard() {
                       {(!inviteAudit || inviteAudit.length === 0) ? (
                         <tr>
                           <td className="px-3 py-6 text-muted-foreground" colSpan={3}>
-                            No invite usage logged yet.
+                            {t("admin.invites.auditEmpty")}
                           </td>
                         </tr>
                       ) : null}

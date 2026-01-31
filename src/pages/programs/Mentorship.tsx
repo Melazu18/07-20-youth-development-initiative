@@ -1,41 +1,44 @@
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
 /**
- * Mentorship program page.
+ * Program page.
  */
-export default function Mentorship() {
+export default function ProgramPage() {
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <div className="section-container py-12 lg:py-20">
-        <h1 className="font-display text-4xl font-bold text-foreground">Mentorship</h1>
+        <h1 className="font-display text-4xl font-bold text-foreground">{t("programs.mentorship")}</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Mentor circles and guidance sessions for ages 15–20, focused on goals, education pathways, leadership, and safe decision-making.
+          {t("programs.mentorshipDescription")}
         </p>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           <Card className="border-border">
             <CardHeader>
-              <CardTitle>Mentor circles</CardTitle>
+              <CardTitle>{t("programs.mentorCircles")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-muted-foreground">
               <ul className="list-disc pl-5">
-                <li>Regular small-group sessions with consistent mentor teams</li>
-                <li>Clear safeguarding standards and reporting procedures</li>
-                <li>Participant attendance and engagement tracking</li>
+                <li>{t("programPages.mentorship.mentorCircles.1")}</li>
+                <li>{t("programPages.mentorship.mentorCircles.2")}</li>
+                <li>{t("programPages.mentorship.mentorCircles.3")}</li>
               </ul>
             </CardContent>
           </Card>
 
           <Card className="border-border">
             <CardHeader>
-              <CardTitle>Volunteer coordination</CardTitle>
+              <CardTitle>{t("programs.volunteerCoordination")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-muted-foreground">
               <ul className="list-disc pl-5">
-                <li>Volunteers can register and book availability</li>
-                <li>Admins can confirm assignments and export coverage summaries</li>
-                <li>Digital policy acknowledgements (safeguarding and data protection)</li>
+                <li>{t("programPages.mentorship.volunteerCoordination.1")}</li>
+                <li>{t("programPages.mentorship.volunteerCoordination.2")}</li>
+                <li>{t("programPages.mentorship.volunteerCoordination.3")}</li>
               </ul>
             </CardContent>
           </Card>

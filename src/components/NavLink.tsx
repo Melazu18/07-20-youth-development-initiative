@@ -1,6 +1,7 @@
 import { NavLink as RouterNavLink, NavLinkProps } from "react-router-dom";
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
+import { localizedPath } from "@/i18n/localizedPath";
 
 interface NavLinkCompatProps extends Omit<NavLinkProps, "className"> {
   className?: string;
@@ -13,7 +14,7 @@ const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
     return (
       <RouterNavLink
         ref={ref}
-        to={to}
+        to={typeof to === 'string' ? localizedPath(to) : to}
         className={({ isActive, isPending }) =>
           cn(className, isActive && activeClassName, isPending && pendingClassName)
         }

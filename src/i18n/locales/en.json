@@ -28,7 +28,15 @@
     "cancel": "Cancel",
     "close": "Close",
     "view": "View",
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "selectLanguage": "Select language",
+    "currentLanguageAria": "Current language: {{languageName}}. Click to change language.",
+    "logoAlt": "07–20 Youth Development Initiative logo",
+    "success": "Success",
+    "tryAgain": "Please try again.",
+    "copied": "Copied",
+    "unknown": "Unknown",
+    "openMenu": "Open menu"
   },
   "home": {
     "heroTitle": "A professional youth development platform (ages 7–20)",
@@ -42,7 +50,9 @@
       "focusAreas": "Focus Areas",
       "focusAreasValue": "Education & Sports",
       "communityPartners": "Community Partners",
-      "communityPartnersValue": "Growing"
+      "communityPartnersValue": "Growing",
+      "ageRangeValue": "7–20",
+      "programsValue": "4+"
     },
     "gdprCompliant": "GDPR Compliant",
     "childSafeguarding": "Child Safeguarding",
@@ -64,7 +74,13 @@
     "ethicalGovernance": "Ethical Governance",
     "programsTitle": "Our Development Programs",
     "programsSubtitle": "Comprehensive pathways designed to support every aspect of youth development, from academic achievement to personal growth.",
-    "viewAllPrograms": "View All Programs"
+    "viewAllPrograms": "View All Programs",
+    "missionPillars": {
+      "safeguardingDesc": "Zero‑tolerance safeguarding with clear reporting and strong standards for all adults.",
+      "dataProtectionDesc": "GDPR-first data handling, retention policies, and user rights built in.",
+      "financialDesc": "Transparent reporting, audit practices, and exportable documentation for partners.",
+      "ethicalDesc": "Clear governance practices, conflict management, and accountability standards."
+    }
   },
   "about": {
     "title": "About",
@@ -193,7 +209,9 @@
       "enrollments": "Enrollments",
       "invites": "Invites",
       "audit": "Invite Audit",
-      "exports": "Exports"
+      "exports": "Exports",
+      "ack": "Safeguarding acknowledgements",
+      "attendance": "Attendance / RSVP compliance"
     },
     "exports": {
       "safeguardingPdf": "Export Safeguarding Acknowledgements (PDF)",
@@ -206,7 +224,15 @@
       "expiresDays": "Expires (Days)",
       "maxUses": "Max Uses",
       "generated": "Generated Code",
-      "copy": "Copy"
+      "copy": "Copy",
+      "createErrorTitle": "Could not create invite",
+      "generating": "Generating…",
+      "copiedBody": "Invite code copied to clipboard.",
+      "redeemHint": "The recipient should go to",
+      "redeemHint2": "and choose Sign up with invite code.",
+      "activeListHelp": "This list does not reveal the invite code itself (only admin-created metadata). Generate a new code if needed.",
+      "auditHelp": "Immutable record of staff invite usage. This supports governance audits and sponsor/municipality review.",
+      "auditEmpty": "No invite usage logged yet."
     },
     "roles": {
       "participant": "Participant",
@@ -235,11 +261,73 @@
     "inviteUsageAudit": "Invite usage audit log",
     "usedAt": "Used at",
     "usedBy": "Used by",
-    "assignedRole": "Assigned role"
+    "assignedRole": "Assigned role",
+    "ack": {
+      "title": "Export acknowledgements",
+      "csv": "CSV",
+      "pdf": "PDF",
+      "description": "This list is generated from signed digital acknowledgements stored in the backend.",
+      "total": "Total acknowledgements"
+    },
+    "attendance": {
+      "title": "RSVP compliance report",
+      "chooseActivity": "Choose an activity...",
+      "unnamedUser": "Unnamed user",
+      "showingFirst15": "Showing first 15. Export PDF for full list.",
+      "remindersHelp": "The system supports scheduled RSVP reminder emails via a Vercel Cron job calling",
+      "remindersHelp2": "Configure email provider environment variables to enable real delivery."
+    },
+    "enrollmentsHelp": "Enrollments define who is expected to RSVP for each activity. The RSVP compliance report and reminder automation only targets participants who have an active enrollment matching the activity’s program type (and optional location).",
+    "locationOptional": "optional",
+    "locationExample": "e.g. Sjuntorp, Vargön, Bråland",
+    "enrollmentSavedTitle": "Enrollment saved",
+    "enrollmentSavedBody": "The participant is now included in RSVP compliance for this program type.",
+    "enrollmentSaveErrorTitle": "Could not save enrollment",
+    "invitesHelp": "Invite codes enable controlled staff signup for volunteers, workers/coaches, and board members. Codes can expire and can be limited to a number of uses.",
+    "inviteList": {
+      "role": "Role",
+      "uses": "Uses",
+      "expires": "Expires",
+      "created": "Created",
+      "noExpiry": "No expiry",
+      "empty": "No active invites found."
+    },
+    "pdf": {
+      "safeguardingTitle": "Safeguarding Policy Acknowledgements",
+      "generated": "Generated",
+      "name": "Name",
+      "email": "Email",
+      "policy": "Policy",
+      "acknowledgedAt": "Acknowledged at",
+      "attendanceTitle": "Attendance / RSVP Compliance Report",
+      "activity": "Activity",
+      "start": "Start",
+      "location": "Location",
+      "rsvp": "RSVP",
+      "respondedAt": "Responded at",
+      "nonRespondersTitle": "Non-responders (no RSVP)"
+    }
   },
   "staff": {
     "title": "Staff Portal",
-    "subtitle": "Tools for volunteers, staff, and board members: activities, participants, and reporting."
+    "subtitle": "Tools for volunteers, staff, and board members: activities, participants, and reporting.",
+    "cards": {
+      "activities": {
+        "title": "Activities",
+        "description": "View the weekly/monthly schedule, venues, and session details. Use this to prepare staffing and follow-up.",
+        "cta": "Open activities"
+      },
+      "governance": {
+        "title": "Governance & Safeguarding",
+        "description": "Review safeguarding, data protection, and governance documents. Staff are expected to follow these policies.",
+        "cta": "Safeguarding policy"
+      },
+      "admin": {
+        "title": "Admin",
+        "description": "Administration tools for compliance exports, staff invites, and enrollment management.",
+        "cta": "Open admin dashboard"
+      }
+    }
   },
   "governancePages": {
     "safeguardingTitle": "Child Safeguarding Policy",
@@ -268,7 +356,20 @@
     "subject": "Subject",
     "message": "Message",
     "sending": "Sending...",
-    "sendMessageButton": "Send Message"
+    "sendMessageButton": "Send Message",
+    "toast": {
+      "successTitle": "Message sent!",
+      "successBody": "We'll get back to you as soon as possible.",
+      "errorTitle": "Could not send message",
+      "errorBody": "Please try again in a moment."
+    },
+    "placeholders": {
+      "firstName": "Anna",
+      "lastName": "Svensson",
+      "email": "anna@example.com",
+      "subject": "How can we help?",
+      "message": "Tell us more about your inquiry..."
+    }
   },
   "footer": {
     "followUs": "FOLLOW US",
@@ -283,6 +384,217 @@
     "termsOfService": "Terms of Service",
     "cookiePolicy": "Cookie Policy",
     "sitemap": "Sitemap",
-    "imprint": "Imprint"
+    "imprint": "Imprint",
+    "addressNote": "(City center - temporary location until registered address)",
+    "viewMapFullScreen": "View map in full screen →",
+    "mapAttribution": "© OpenStreetMap contributors"
+  },
+  "notFound": {
+    "title": "Oops! Page not found",
+    "backHome": "Return to Home"
+  },
+  "programPages": {
+    "schoolSupport": {
+      "whatWeDo": {
+        "1": "Weekly homework support sessions (small groups)",
+        "2": "Study plans and goal tracking",
+        "3": "Guidance for parents/guardians on routines and follow-up"
+      },
+      "howItConnects": {
+        "1": "Attendance tracking aligned with safeguarding and data protection",
+        "2": "Mentor feedback integrated into participant progress profiles",
+        "3": "Exportable summaries for school collaboration (when consent applies)"
+      }
+    },
+    "football": {
+      "weeklyTraining": {
+        "1": "Age-group sessions in Trollhättan and Vänersborg (including Sjuntorp and Vargön)",
+        "2": "Separate sessions for boys and girls where appropriate",
+        "3": "Attendance and RSVP rules (48h response window) supported by the platform"
+      },
+      "intensiveTraining": {
+        "1": "Fridays 17:00–18:30 for ages 15–20",
+        "2": "Individual technical/tactical focus with feedback logs",
+        "3": "Suitable for participants aiming for higher competitive levels"
+      }
+    },
+    "mentorship": {
+      "mentorCircles": {
+        "1": "Regular small-group sessions with consistent mentor teams",
+        "2": "Clear safeguarding standards and reporting procedures",
+        "3": "Participant attendance and engagement tracking"
+      },
+      "volunteerCoordination": {
+        "1": "Volunteers can register and book availability",
+        "2": "Admins can confirm assignments and export coverage summaries",
+        "3": "Digital policy acknowledgements (safeguarding and data protection)"
+      }
+    },
+    "creative": {
+      "workshops": {
+        "1": "Creative workshops (media, arts, and project-based learning)",
+        "2": "Safe and inclusive environment with clear conduct expectations",
+        "3": "Age-adapted sessions for 8–14 and mixed groups"
+      },
+      "outcomes": {
+        "1": "Confidence and communication improvements",
+        "2": "Documented participation and progress notes",
+        "3": "Exportable summaries for partners when consent applies"
+      }
+    },
+    "socialIntegration": {
+      "fundableTitle": "Program Description (Fundable Language)",
+      "fundableBody": "The approach strengthens protective factors such as consistent adult support, peer belonging, and structured routines, while building bridges between families, schools, clubs, and local communities.",
+      "outcomesMeasuredTitle": "Outcomes we measure",
+      "outcomesMeasured": {
+        "1": "Participation consistency and retention over time.",
+        "2": "Increased social belonging and peer connection.",
+        "3": "Improved Swedish language confidence in practical settings.",
+        "4": "Family engagement and support network strength."
+      },
+      "whoForTitle": "Who it is for",
+      "whoForBody": "Young people ages 7–20 in Trollhättan and Vänersborg with a focus on youth who are new in Sweden, or from under-resourced communities seeking safe, structured pathways into sport, creativity, and mentorship."
+    }
+  },
+  "governanceContent": {
+    "badge": "Governance Policy",
+    "safeguarding": {
+      "lead": "The safety and wellbeing of every young person in our programs is our highest priority. This policy outlines our commitment to creating a safe environment for all participants.",
+      "policies": {
+        "zeroTolerance": {
+          "title": "Zero Tolerance",
+          "desc": "We maintain zero tolerance for abuse, neglect, exploitation, or harassment of any kind."
+        },
+        "backgroundChecks": {
+          "title": "Background Checks",
+          "desc": "All staff, volunteers, and coaches undergo mandatory background checks before working with children."
+        },
+        "codeOfConduct": {
+          "title": "Code of Conduct",
+          "desc": "Clear behavioral standards for all adults interacting with young people in our programs."
+        },
+        "reporting": {
+          "title": "Reporting Procedures",
+          "desc": "Confidential and accessible channels for reporting any safeguarding concerns."
+        }
+      },
+      "commitmentTitle": "Our Commitment",
+      "commitmentBody": "07–20 Youth Development Initiative is committed to safeguarding and promoting the welfare of children and young people. We expect all staff, volunteers, coaches, and partner organizations to share this commitment.",
+      "principlesTitle": "Key Principles",
+      "principles": {
+        "1": "The welfare of children is paramount in all our work",
+        "2": "All children have the right to protection from abuse and exploitation",
+        "3": "Safeguarding is everyone's responsibility",
+        "4": "We work in partnership with families and communities",
+        "5": "We maintain transparent and accountable practices"
+      },
+      "reportingTitle": "Reporting Concerns",
+      "reportingBody": "If you have any safeguarding concerns, please contact our designated safeguarding lead immediately. All reports are handled confidentially and in accordance with Swedish law and best practices.",
+      "contactTitle": "Safeguarding Contact",
+      "contactEmail": "Email: safeguarding@07-20.org",
+      "contactNote": "All staff and volunteers are required to acknowledge this policy upon joining.",
+      "ackTitle": "Policy Acknowledgement",
+      "ackBody": "All staff and volunteers must digitally acknowledge and sign this policy upon account creation. Signed acknowledgements are exportable as PDF for compliance documentation."
+    },
+    "dataProtection": {
+      "lead": "We are committed to GDPR-compliant data protection. This page explains what we collect, how we use it, and your rights.",
+      "categories": {
+        "collect": {
+          "title": "What We Collect",
+          "desc": "Personal information necessary for program participation, including names, contact details, and development records."
+        },
+        "use": {
+          "title": "How We Use It",
+          "desc": "Data is used solely for program delivery, progress tracking, and reporting to stakeholders with proper consent."
+        },
+        "retention": {
+          "title": "Data Retention",
+          "desc": "We retain data only as long as necessary for the purposes described, with clear retention policies and deletion routines."
+        },
+        "rights": {
+          "title": "Your Rights",
+          "desc": "You can access, correct, export, or delete your personal data, and withdraw consent at any time."
+        }
+      },
+      "consentTitle": "Consent Management",
+      "consentBody": "All registration forms include GDPR consent checkboxes. Consent can be withdrawn at any time through your account settings or by contacting our Data Protection Officer.",
+      "exerciseTitle": "Exercise Your Rights",
+      "exerciseBody": "For data protection inquiries or to exercise your rights:",
+      "dpoTitle": "Data Protection Officer",
+      "dpoBody": "Contact our DPO for data protection inquiries.",
+      "dpoEmail": "Email: dpo@07-20.org",
+      "accountToolsTitle": "Account Tools",
+      "accountToolsBody": "Registered users can manage their data directly through their account dashboard. The following options are available:",
+      "actions": {
+        "viewData": "View My Data",
+        "exportData": "Export My Data",
+        "deleteAccount": "Delete My Account"
+      },
+      "note": "Note: Sign in required to access these features. Requests are processed within 30 days."
+    },
+    "financial": {
+      "lead": "We are committed to complete transparency in how we receive and allocate funds. Our financial practices meet the standards required by municipalities, Vinnova, and other stakeholders.",
+      "sections": {
+        "fundingSources": "Funding Sources",
+        "fundAllocation": "Fund Allocation",
+        "auditPolicy": "Audit Policy",
+        "antiFraud": "Anti-Fraud Prevention"
+      },
+      "bodies": {
+        "fundingSources": "We document where funding comes from (municipalities, grants, partners) and publish summaries for stakeholders.",
+        "fundAllocation": "We track and report how funds are allocated across programs, staffing, safeguarding, and operations.",
+        "auditPolicy": "Our accounts are reviewed annually by an independent auditor. Audit reports can be requested by stakeholders.",
+        "antiFraud": "We apply controls to prevent misuse, including approval workflows and transparent recordkeeping."
+      },
+      "reportsTitle": "Annual Reports",
+      "reportsBody": "Our accounts are reviewed annually by an independent auditor. Audit reports are made available to stakeholders and can be requested through our contact form.",
+      "archiveTitle": "Annual Report Archive",
+      "actions": {
+        "viewReports": "View Reports",
+        "accessArchive": "Access previous years' financial reports"
+      }
+    },
+    "coi": {
+      "lead": "Maintaining ethical standards and impartiality in all our operations. This policy ensures transparency and accountability in decision-making processes.",
+      "sections": {
+        "disclosureTitle": "Disclosure Requirements",
+        "disclosureBody": "All board members, staff, and key partners are required to disclose any actual, potential, or perceived conflicts of interest upon joining and whenever a new conflict arises.",
+        "recusalTitle": "Recusal Procedures",
+        "recusalBody": "When a conflict is identified, the person must step back from related decisions and discussions.",
+        "internalProcessTitle": "Internal Disclosure Process",
+        "internalProcessBody": "Staff and board members can submit conflict of interest disclosures through the internal portal. All submissions are reviewed by an admin-only review panel.",
+        "transparencyTitle": "Transparency Reporting",
+        "transparencyBody": "We maintain a register of declared conflicts. Summary information is included in our annual governance report."
+      },
+      "proceduresTitle": "When a conflict of interest is identified",
+      "proceduresLead": "The following procedures apply:",
+      "procedures": {
+        "1": "Declare the conflict as soon as it is identified.",
+        "2": "Record the disclosure in the conflict register.",
+        "3": "Recuse from decisions where the conflict applies.",
+        "4": "Review and confirm compliance during audits."
+      }
+    }
+  },
+  "ui": {
+    "more": "More",
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb"
+    },
+    "pagination": {
+      "previous": "Go to previous page",
+      "next": "Go to next page",
+      "previousLabel": "Previous",
+      "nextLabel": "Next",
+      "morePages": "More pages"
+    },
+    "sidebar": {
+      "toggle": "Toggle sidebar"
+    },
+    "close": "Close",
+    "carousel": {
+      "previousSlide": "Previous slide",
+      "nextSlide": "Next slide"
+    }
   }
 }

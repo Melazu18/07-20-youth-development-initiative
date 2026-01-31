@@ -7,7 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
+import { LocalizedLink as Link } from "@/components/LocalizedLink";
 
 /**
  * Youth/participant sign-in and sign-up.
@@ -34,7 +35,7 @@ export default function AuthYouth() {
       if (mode === "signin") {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        toast({ title: "OK", description: t("auth.signIn") });
+        toast({ title: t("common.success"), description: t("auth.signIn") });
         navigate("/activities");
       } else {
         const { error } = await supabase.auth.signUp({

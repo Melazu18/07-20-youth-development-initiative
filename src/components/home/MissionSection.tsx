@@ -1,74 +1,64 @@
 import { Shield, Eye, FileText, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const pillars = [
-  {
-    title: "Child Safeguarding",
-    description: "Zero-tolerance policy for abuse with mandatory background checks and clear reporting procedures.",
-    icon: Shield,
-    href: "/safeguarding",
-  },
-  {
-    title: "Data Protection",
-    description: "Full GDPR compliance with transparent data handling, retention policies, and user rights.",
-    icon: Eye,
-    href: "/data-protection",
-  },
-  {
-    title: "Financial Transparency",
-    description: "Open reporting on funding allocation, annual audits, and anti-fraud prevention measures.",
-    icon: FileText,
-    href: "/financial-transparency",
-  },
-  {
-    title: "Ethical Governance",
-    description: "Clear conflict of interest policies, disclosure requirements, and accountability structures.",
-    icon: Scale,
-    href: "/conflict-of-interest",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function MissionSection() {
-  return (
-    <section className="py-16 lg:py-24">
-      <div className="section-container">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          {/* Content */}
-          <div>
-            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
-              Built on Trust,
-              <span className="block text-primary">Committed to Excellence</span>
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Operating under the <strong>Made By Young Hands</strong> youth development model, 
-              we connect schools, sports clubs, families, and community partners into a unified 
-              system that tracks development, participation, and long-term outcomes.
-            </p>
-            <p className="mt-4 text-muted-foreground">
-              Our platform meets the rigorous standards reviewed by municipalities, Vinnova, 
-              schools, sports federations, corporate sponsors, and NGOs across Sweden.
-            </p>
-          </div>
+  const { t } = useTranslation();
 
-          {/* Governance pillars */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            {pillars.map((pillar, index) => (
-              <Link
-                key={pillar.title}
-                to={pillar.href}
-                className="group rounded-lg border border-border bg-card p-5 transition-all hover:border-primary/20 hover:shadow-card"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <pillar.icon className="h-8 w-8 text-primary" />
-                <h3 className="mt-3 font-semibold text-foreground group-hover:text-primary transition-colors">
+  const pillars = [
+    {
+      title: t("home.childSafeguardingPolicy"),
+      description: t("home.missionPillars.safeguardingDesc"),
+      icon: Shield,
+      href: "/safeguarding",
+    },
+    {
+      title: t("home.dataProtection"),
+      description: t("home.missionPillars.dataProtectionDesc"),
+      icon: Eye,
+      href: "/data-protection",
+    },
+    {
+      title: t("home.financialTransparency"),
+      description: t("home.missionPillars.financialDesc"),
+      icon: FileText,
+      href: "/financial-transparency",
+    },
+    {
+      title: t("home.ethicalGovernance"),
+      description: t("home.missionPillars.ethicalDesc"),
+      icon: Scale,
+      href: "/conflict-of-interest",
+    },
+  ];
+
+  return (
+    <section className="relative overflow-hidden border-t border-border/40 bg-background">
+      <div className="section-container py-16 lg:py-20">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            {t("home.missionTitle")}
+          </h2>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
+            {t("home.missionBody")}
+          </p>
+          <p className="mx-auto mt-4 max-w-3xl text-base text-muted-foreground">
+            {t("home.missionStandards")}
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {pillars.map((pillar) => (
+            <Link key={pillar.title} to={pillar.href} className="group">
+              <div className="card-elevated h-full p-6 transition-all duration-300 hover:scale-[1.02]">
+                <pillar.icon className="h-9 w-9 text-primary" />
+                <h3 className="mt-4 text-lg font-semibold text-foreground group-hover:text-primary">
                   {pillar.title}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {pillar.description}
-                </p>
-              </Link>
-            ))}
-          </div>
+                <p className="mt-2 text-sm text-muted-foreground">{pillar.description}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

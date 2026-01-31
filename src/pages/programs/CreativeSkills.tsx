@@ -1,41 +1,44 @@
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
 /**
- * Creative Skills program page.
+ * Program page.
  */
-export default function CreativeSkills() {
+export default function ProgramPage() {
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <div className="section-container py-12 lg:py-20">
-        <h1 className="font-display text-4xl font-bold text-foreground">Creative Skills</h1>
+        <h1 className="font-display text-4xl font-bold text-foreground">{t("programs.creativeSkills")}</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Workshops that build confidence, collaboration, and practical skills. These sessions complement sport and education pathways.
+          {t("programs.creativeSkillsDescription")}
         </p>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           <Card className="border-border">
             <CardHeader>
-              <CardTitle>Workshops</CardTitle>
+              <CardTitle>{t("programs.workshops")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-muted-foreground">
               <ul className="list-disc pl-5">
-                <li>Creative workshops (media, arts, and project-based learning)</li>
-                <li>Safe and inclusive environment with clear conduct expectations</li>
-                <li>Age-adapted sessions for 8–14 and mixed groups</li>
+                <li>{t("programPages.creative.workshops.1")}</li>
+                <li>{t("programPages.creative.workshops.2")}</li>
+                <li>{t("programPages.creative.workshops.3")}</li>
               </ul>
             </CardContent>
           </Card>
 
           <Card className="border-border">
             <CardHeader>
-              <CardTitle>Outcomes</CardTitle>
+              <CardTitle>{t("programs.outcomes")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-muted-foreground">
               <ul className="list-disc pl-5">
-                <li>Confidence and communication improvements</li>
-                <li>Documented participation and progress notes</li>
-                <li>Exportable summaries for partners when consent applies</li>
+                <li>{t("programPages.creative.outcomes.1")}</li>
+                <li>{t("programPages.creative.outcomes.2")}</li>
+                <li>{t("programPages.creative.outcomes.3")}</li>
               </ul>
             </CardContent>
           </Card>

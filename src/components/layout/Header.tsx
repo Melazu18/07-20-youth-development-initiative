@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { LocalizedLink as Link } from "@/components/LocalizedLink";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ChevronDown } from "lucide-react";
@@ -12,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "@/i18n";
 
 /**
  * Top-level site navigation.
@@ -50,7 +52,36 @@ const navigation = [
     ],
   },
   { key: "nav.contact", href: "/contact" },
-];
+] as const;
+
+function normalizePath(pathname: string) {
+  // Remove query/hash (location.pathname shouldn’t include it, but keep safe).
+  const path = pathname.split("?")[0].split("#")[0];
+
+  // Strip trailing slash except root
+  const trimmed = path.length > 1 ? path.replace(/\/+$/, "") : path;
+
+  // Handle language prefix: "/en/about" => "/about"
+  const parts = trimmed.split("/").filter(Boolean);
+  const maybeLang = parts[0] as SupportedLanguage | undefined;
+
+  if (maybeLang && SUPPORTED_LANGUAGES.includes(maybeLang)) {
+    const rest = parts.slice(1).join("/");
+    return rest ? `/${rest}` : "/";
+  }
+
+  return trimmed || "/";
+}
+
+function isRouteActive(currentPath: string, href: string) {
+  if (!href || href === "#") return false;
+
+  // Exact match for home
+  if (href === "/") return currentPath === "/";
+
+  // Active for the whole section
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+}
 
 export function Header() {
   const { profile } = useAuth();
@@ -58,25 +89,59 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  const isActive = (href: string) => location.pathname === href;
+  const currentPath = useMemo(
+    () => normalizePath(location.pathname),
+    [location.pathname],
+  );
+
+  // Close mobile menu when route changes (prevents “stuck open” state)
+  useEffect(() => {
+    if (mobileMenuOpen) setMobileMenuOpen(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
+
+  const isActive = (href: string) => isRouteActive(currentPath, href);
+
+  const isAnyChildActive = (children?: readonly { href: string }[]) =>
+    children?.some((c) => isActive(c.href)) ?? false;
+
+  // Polished “active looks like hover” style:
+  // - subtle background
+  // - underline animation
+  const navButtonClass = (active: boolean) =>
+    [
+      "relative text-sm font-medium transition-colors",
+      "px-3",
+      "hover:text-foreground hover:bg-secondary/50",
+      active ? "text-foreground bg-secondary/60" : "text-muted-foreground",
+      // underline animation
+      "after:absolute after:left-3 after:right-3 after:-bottom-1 after:h-px after:rounded-full after:bg-foreground/60 after:transition-transform after:duration-200",
+      active
+        ? "after:scale-x-100"
+        : "after:scale-x-0 hover:after:scale-x-100",
+    ].join(" ");
+
+  const dropdownItemClass = (active: boolean) =>
+    [
+      "w-full rounded-sm px-2 py-1.5 transition-colors",
+      active ? "bg-secondary text-foreground" : "hover:bg-secondary/50",
+    ].join(" ");
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="section-container flex h-16 items-center justify-between">
-        {/* Brand logo - Enhanced Professional Version */}
+        {/* Brand logo */}
         <Link to="/" className="flex items-center gap-3 group">
           <div className="relative flex items-center gap-3">
-            {/* Logo with subtle background */}
             <div className="relative h-12 w-12 flex items-center justify-center rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 border border-border/50">
               <img
                 src="/assets/00007.png"
-                alt="07–20 Youth Development Initiative logo"
+                alt={t("common.logoAlt")}
                 className="h-10 w-10 object-contain transition-transform group-hover:scale-105"
                 loading="eager"
               />
             </div>
 
-            {/* Text container with improved typography */}
             <div className="hidden sm:block">
               <div className="flex flex-col leading-tight">
                 <span className="text-xl font-bold tracking-tight text-foreground">
@@ -89,9 +154,9 @@ export function Header() {
             </div>
           </div>
 
-          {/* Optional: Add a vertical separator */}
           <div className="hidden md:block h-6 w-px bg-border/50 ml-2" />
         </Link>
+
         {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:items-center lg:gap-1">
           {navigation.map((item) =>
@@ -100,35 +165,28 @@ export function Header() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground"
+                    className={navButtonClass(isAnyChildActive(item.children))}
                   >
                     {t(item.key)}
                     <ChevronDown className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-48">
-                  {item.children.map((child) => (
-                    <DropdownMenuItem key={child.href} asChild>
-                      <Link
-                        to={child.href}
-                        className={isActive(child.href) ? "bg-secondary" : ""}
-                      >
-                        {t(child.key)}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
+                <DropdownMenuContent align="start" className="w-56">
+                  {item.children.map((child) => {
+                    const active = isActive(child.href);
+                    return (
+                      <DropdownMenuItem key={child.href} asChild>
+                        <Link to={child.href} className={dropdownItemClass(active)}>
+                          {t(child.key)}
+                        </Link>
+                      </DropdownMenuItem>
+                    );
+                  })}
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
               <Link key={item.key} to={item.href}>
-                <Button
-                  variant="ghost"
-                  className={`text-sm font-medium ${
-                    isActive(item.href)
-                      ? "text-foreground bg-secondary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
+                <Button variant="ghost" className={navButtonClass(isActive(item.href))}>
                   {t(item.key)}
                 </Button>
               </Link>
@@ -168,9 +226,10 @@ export function Header() {
           <SheetTrigger asChild className="lg:hidden">
             <Button variant="ghost" size="icon">
               <Menu className="h-6 w-6" />
-              <span className="sr-only">Open menu</span>
+              <span className="sr-only">{t("common.openMenu")}</span>
             </Button>
           </SheetTrigger>
+
           <SheetContent side="right" className="w-full max-w-sm">
             <div className="flex flex-col gap-6 py-6">
               <div className="flex items-center justify-between">
@@ -179,14 +238,17 @@ export function Header() {
                 </span>
                 <LanguageSwitcher />
               </div>
+
               {profile &&
-              ["volunteer", "staff", "board", "admin"].includes(
-                profile.role,
-              ) ? (
+              ["volunteer", "staff", "board", "admin"].includes(profile.role) ? (
                 <Link
                   to="/staff"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm font-medium text-foreground"
+                  className={`text-sm font-medium transition-colors ${
+                    isActive("/staff")
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {t("nav.staffPortal")}
                 </Link>
@@ -195,20 +257,33 @@ export function Header() {
               {navigation.map((item) =>
                 item.children ? (
                   <div key={item.key} className="space-y-2">
-                    <span className="text-sm font-semibold text-foreground">
+                    <span
+                      className={`text-sm font-semibold ${
+                        isAnyChildActive(item.children)
+                          ? "text-foreground"
+                          : "text-muted-foreground"
+                      }`}
+                    >
                       {t(item.key)}
                     </span>
                     <div className="ml-4 flex flex-col gap-2">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          to={child.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="text-sm text-muted-foreground hover:text-foreground"
-                        >
-                          {t(child.key)}
-                        </Link>
-                      ))}
+                      {item.children.map((child) => {
+                        const active = isActive(child.href);
+                        return (
+                          <Link
+                            key={child.href}
+                            to={child.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className={`text-sm transition-colors ${
+                              active
+                                ? "text-foreground font-medium"
+                                : "text-muted-foreground hover:text-foreground"
+                            }`}
+                          >
+                            {t(child.key)}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 ) : (
@@ -216,7 +291,7 @@ export function Header() {
                     key={item.key}
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`text-sm font-medium ${
+                    className={`text-sm font-medium transition-colors ${
                       isActive(item.href)
                         ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground"
@@ -226,11 +301,10 @@ export function Header() {
                   </Link>
                 ),
               )}
+
               <div className="mt-4 flex flex-col gap-3">
                 {profile &&
-                ["volunteer", "staff", "board", "admin"].includes(
-                  profile.role,
-                ) ? (
+                ["volunteer", "staff", "board", "admin"].includes(profile.role) ? (
                   <Link to="/staff" onClick={() => setMobileMenuOpen(false)}>
                     <Button variant="outline" className="w-full">
                       {t("nav.staffPortal")}

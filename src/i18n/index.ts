@@ -1,5 +1,9 @@
 /**
  * Internationalization (i18n) setup.
+ *
+ * - Uses i18next + react-i18next
+ * - Persists language in localStorage (via i18next-browser-languagedetector)
+ * - Keeps <html lang> and <html dir> in sync (RTL for Arabic)
  */
 
 import i18n from "i18next";
@@ -16,46 +20,61 @@ export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 export const DEFAULT_LANGUAGE: SupportedLanguage = "sv";
 
-export const LANGUAGE_NAMES: Record<SupportedLanguage, string> = {
+/**
+ * Native/original language names (must NOT be translated).
+ * Always show:
+ * - English (not "Engelska")
+ * - Svenska (not "Swedish")
+ * - Français (not "Franska")
+ * - العربية (not "Arabiska")
+ */
+export const LANGUAGE_NAMES_NATIVE: Record<SupportedLanguage, string> = {
   sv: "Svenska",
   en: "English",
   fr: "Français",
-  ar: "العربية"
+  ar: "العربية",
 };
+
+// Backwards compatibility (older imports)
+export const LANGUAGE_NAMES = LANGUAGE_NAMES_NATIVE;
 
 export const LANGUAGE_DIRECTIONS: Record<SupportedLanguage, "ltr" | "rtl"> = {
   sv: "ltr",
   en: "ltr",
   fr: "ltr",
-  ar: "rtl"
+  ar: "rtl",
 };
 
 export function isRtlLanguage(lang: string): boolean {
-  const langCode = lang.split('-')[0] as SupportedLanguage;
-  return LANGUAGE_DIRECTIONS[langCode] === "rtl";
-}
-
-export function getCurrentDirection(): "ltr" | "rtl" {
-  const currentLang = i18n.language || DEFAULT_LANGUAGE;
-  const langCode = currentLang.split('-')[0] as SupportedLanguage;
-  return LANGUAGE_DIRECTIONS[langCode] || "ltr";
-}
-
-export function changeLanguage(lng: SupportedLanguage): Promise<void> {
-  return i18n.changeLanguage(lng).then(() => {
-    const direction = LANGUAGE_DIRECTIONS[lng];
-    document.documentElement.dir = direction;
-    document.documentElement.lang = lng;
-    localStorage.setItem("app_language", lng);
-  });
+  const langCode = (lang || DEFAULT_LANGUAGE).split("-")[0] as SupportedLanguage;
+  return (LANGUAGE_DIRECTIONS[langCode] || "ltr") === "rtl";
 }
 
 export function getCurrentLanguage(): SupportedLanguage {
-  const lang = i18n.language;
-  if (!lang) return DEFAULT_LANGUAGE;
-  
-  const langCode = lang.split('-')[0] as SupportedLanguage;
+  const lang = i18n.language || DEFAULT_LANGUAGE;
+  const langCode = lang.split("-")[0] as SupportedLanguage;
   return SUPPORTED_LANGUAGES.includes(langCode) ? langCode : DEFAULT_LANGUAGE;
+}
+
+export function getCurrentDirection(): "ltr" | "rtl" {
+  const langCode = getCurrentLanguage();
+  return LANGUAGE_DIRECTIONS[langCode] || "ltr";
+}
+
+/**
+ * Change language and synchronise <html lang/dir>.
+ * NOTE: language persistence is handled by the detector cache.
+ */
+export async function changeLanguage(lng: SupportedLanguage): Promise<void> {
+  await i18n.changeLanguage(lng);
+  document.documentElement.dir = LANGUAGE_DIRECTIONS[lng] || "ltr";
+  document.documentElement.lang = lng;
+}
+
+function syncDocumentAttributes(lng: string) {
+  const langCode = (lng || DEFAULT_LANGUAGE).split("-")[0] as SupportedLanguage;
+  document.documentElement.dir = LANGUAGE_DIRECTIONS[langCode] || "ltr";
+  document.documentElement.lang = langCode;
 }
 
 // Initialize i18n
@@ -71,25 +90,27 @@ i18n
     },
     fallbackLng: DEFAULT_LANGUAGE,
     supportedLngs: [...SUPPORTED_LANGUAGES],
+    // Important: treat en-US, sv-SE, etc as their base language keys
+    load: "languageOnly",
+    nonExplicitSupportedLngs: true,
     defaultNS: "translation",
     interpolation: { escapeValue: false },
+    react: { useSuspense: false },
     detection: {
       order: ["localStorage", "navigator"],
       lookupLocalStorage: "app_language",
       caches: ["localStorage"],
     },
+    // Avoid returning null for missing keys (prevents React warnings)
+    returnNull: false,
   });
 
 // Set initial document attributes
-const initialLang = getCurrentLanguage();
-document.documentElement.dir = getCurrentDirection();
-document.documentElement.lang = initialLang;
+syncDocumentAttributes(getCurrentLanguage());
 
-// Update document when language changes
+// Keep document attributes synced on change
 i18n.on("languageChanged", (lng: string) => {
-  const langCode = lng.split('-')[0] as SupportedLanguage;
-  document.documentElement.dir = LANGUAGE_DIRECTIONS[langCode] || "ltr";
-  document.documentElement.lang = langCode;
+  syncDocumentAttributes(lng);
 });
 
 export default i18n;
