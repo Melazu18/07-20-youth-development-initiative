@@ -7,12 +7,13 @@
  * - Français (not "Franska")
  * - العربية (not "Arabiska")
  *
- * Stores the selected language in localStorage via i18next-browser-languagedetector.
+ * Stores the selected language in localStorage.
  */
 
 import { Globe, Check } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -27,6 +28,8 @@ import {
   LANGUAGE_NAMES_NATIVE,
   type SupportedLanguage,
 } from "@/i18n";
+
+const STORAGE_KEY = "app_language";
 
 // Optional: Add geographical context for better UX (kept as native strings)
 const LANGUAGE_CONTEXT: Record<SupportedLanguage, string> = {
@@ -49,8 +52,28 @@ function normalizeLang(lng: string | undefined): SupportedLanguage {
   return (SUPPORTED_LANGUAGES as readonly string[]).includes(code) ? code : "sv";
 }
 
+function buildPathWithLang(
+  pathname: string,
+  search: string,
+  hash: string,
+  lang: SupportedLanguage,
+) {
+  const parts = pathname.split("/").filter(Boolean);
+  const first = (parts[0] || "").slice(0, 2).toLowerCase() as SupportedLanguage;
+
+  const rest = (SUPPORTED_LANGUAGES as readonly string[]).includes(first)
+    ? parts.slice(1)
+    : parts;
+
+  const restPath = rest.length ? `/${rest.join("/")}` : "";
+  return `/${lang}${restPath}${search || ""}${hash || ""}`;
+}
+
 export function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [currentLang, setCurrentLang] = useState<SupportedLanguage>(() =>
     normalizeLang(i18n.language),
   );
@@ -70,12 +93,25 @@ export function LanguageSwitcher() {
   }, [i18n]);
 
   const setLang = async (lang: SupportedLanguage) => {
+    // Persist user preference so first-visit detection won't override later
+    localStorage.setItem(STORAGE_KEY, lang);
+
     await i18n.changeLanguage(lang);
 
     // Ensure the document direction updates immediately (important for Arabic).
     const dir = isRtlLanguage(lang) ? "rtl" : "ltr";
     document.documentElement.setAttribute("dir", dir);
     document.documentElement.setAttribute("lang", lang);
+
+    // Keep the same page by swapping only the language prefix in the URL
+    const next = buildPathWithLang(
+      location.pathname,
+      location.search,
+      location.hash,
+      lang,
+    );
+
+    navigate(next, { replace: true });
 
     setIsOpen(false);
   };
@@ -98,9 +134,7 @@ export function LanguageSwitcher() {
           <span className="hidden sm:inline text-sm font-medium">
             {currentLanguageName}
           </span>
-          <span className="text-xs opacity-80">
-            {currentLang.toUpperCase()}
-          </span>
+          <span className="text-xs opacity-80">{currentLang.toUpperCase()}</span>
         </Button>
       </DropdownMenuTrigger>
 
@@ -139,6 +173,9 @@ export function LanguageSwitcher() {
 // Alternative: Compact version with just language codes
 export function CompactLanguageSwitcher() {
   const { i18n, t } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [currentLang, setCurrentLang] = useState<SupportedLanguage>(() =>
     normalizeLang(i18n.language),
   );
@@ -155,11 +192,21 @@ export function CompactLanguageSwitcher() {
   }, [i18n]);
 
   const setLang = async (lang: SupportedLanguage) => {
+    localStorage.setItem(STORAGE_KEY, lang);
+
     await i18n.changeLanguage(lang);
 
     const dir = isRtlLanguage(lang) ? "rtl" : "ltr";
     document.documentElement.setAttribute("dir", dir);
     document.documentElement.setAttribute("lang", lang);
+
+    const next = buildPathWithLang(
+      location.pathname,
+      location.search,
+      location.hash,
+      lang,
+    );
+    navigate(next, { replace: true });
   };
 
   return (
@@ -202,6 +249,9 @@ export function CompactLanguageSwitcher() {
 // Alternative: Minimalist flag-only switcher
 export function FlagLanguageSwitcher() {
   const { i18n, t } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [currentLang, setCurrentLang] = useState<SupportedLanguage>(() =>
     normalizeLang(i18n.language),
   );
@@ -218,11 +268,21 @@ export function FlagLanguageSwitcher() {
   }, [i18n]);
 
   const setLang = async (lang: SupportedLanguage) => {
+    localStorage.setItem(STORAGE_KEY, lang);
+
     await i18n.changeLanguage(lang);
 
     const dir = isRtlLanguage(lang) ? "rtl" : "ltr";
     document.documentElement.setAttribute("dir", dir);
     document.documentElement.setAttribute("lang", lang);
+
+    const next = buildPathWithLang(
+      location.pathname,
+      location.search,
+      location.hash,
+      lang,
+    );
+    navigate(next, { replace: true });
   };
 
   return (
