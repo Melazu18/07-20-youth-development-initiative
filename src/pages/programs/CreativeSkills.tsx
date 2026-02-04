@@ -3,15 +3,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 
 /**
- * Program page.
+ * Creative Skills program page.
  */
-export default function ProgramPage() {
+export default function CreativeSkills() {
   const { t } = useTranslation();
 
   return (
     <Layout>
       <div className="section-container py-12 lg:py-20">
-        <h1 className="font-display text-4xl font-bold text-foreground">{t("programs.creativeSkills")}</h1>
+        <h1 className="font-display text-4xl font-bold text-foreground">
+          {t("programs.creativeSkills")}
+        </h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
           {t("programs.creativeSkillsDescription")}
         </p>

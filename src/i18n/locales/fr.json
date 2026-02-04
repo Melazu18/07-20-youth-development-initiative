@@ -2,7 +2,7 @@
   "app": {
     "name": "Initiative de Développement des Jeunes",
     "shortName": "07-20",
-    "tagline": "Un système de développement des jeunes prêt pour les municipalités et les subventions pour les 7 à 20 ans."
+    "tagline": "Un système de développement des jeunes prêt pour les municipalités et les subventions pour les 7–20 ans."
   },
   "nav": {
     "home": "Accueil",
@@ -12,9 +12,14 @@
     "contact": "Contact",
     "governance": "Gouvernance",
     "admin": "Portail Admin",
-    "staffPortal": "Portail Staff",
+    "staffPortal": "Portail Personnel",
     "login": "Connexion",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "organizationMenu": "Organisation",
+    "team": "Équipe",
+    "founder": "Fondateur",
+    "board": "Membres du Conseil",
+    "volunteers": "Bénévoles"
   },
   "common": {
     "language": "Langue",
@@ -29,9 +34,9 @@
     "close": "Fermer",
     "view": "Voir",
     "learnMore": "En savoir plus",
-    "selectLanguage": "Choisir la langue",
+    "selectLanguage": "Sélectionner la langue",
     "currentLanguageAria": "Langue actuelle : {{languageName}}. Cliquez pour changer de langue.",
-    "logoAlt": "Logo de l’Initiative de Développement des Jeunes 07–20",
+    "logoAlt": "Logo de l'Initiative de Développement des Jeunes 07–20",
     "success": "Succès",
     "tryAgain": "Veuillez réessayer.",
     "copied": "Copié",
@@ -39,7 +44,7 @@
     "openMenu": "Ouvrir le menu"
   },
   "home": {
-    "heroTitle": "Une plateforme professionnelle de développement des jeunes (7-20 ans)",
+    "heroTitle": "Une plateforme professionnelle de développement des jeunes (7–20 ans)",
     "heroSubtitle": "Système opérationnel pour la planification, la présence, les bénévoles, la gouvernance et les rapports.",
     "ctaPrimary": "Voir le calendrier",
     "ctaSecondary": "En savoir plus",
@@ -47,86 +52,86 @@
     "stats": {
       "ageRange": "Tranche d'âge",
       "programs": "Programmes",
-      "focusAreas": "Domaines d'action",
+      "focusAreas": "Domaines d'intervention",
       "focusAreasValue": "Éducation & Sports",
       "communityPartners": "Partenaires communautaires",
       "communityPartnersValue": "En croissance",
       "ageRangeValue": "7–20",
       "programsValue": "4+"
     },
-    "gdprCompliant": "Conforme au RGPD",
-    "childSafeguarding": "Protection de l'enfance",
-    "joinCommunityTitle": "Rejoignez notre communauté",
-    "joinCommunitySubtitle": "Que vous soyez un jeune cherchant à se développer, un parent cherchant du soutien ou quelqu'un qui souhaite contribuer, il y a une place pour vous ici.",
+    "gdprCompliant": "Conforme GDPR",
+    "childSafeguarding": "Protection de l'Enfance",
+    "joinCommunityTitle": "Rejoignez Notre Communauté",
+    "joinCommunitySubtitle": "Que vous soyez un jeune cherchant à grandir, un parent recherchant du soutien ou quelqu'un souhaitant contribuer, il y a une place pour vous ici.",
     "volunteer": "Bénévole",
     "volunteerDesc": "Partagez vos compétences et votre temps pour faire la différence",
     "mentor": "Mentor",
     "mentorDesc": "Guidez et inspirez la prochaine génération",
     "partner": "Partenaire",
     "partnerDesc": "Collaborez en tant qu'école, club ou organisation",
-    "createAccount": "Créer votre compte",
-    "missionTitle": "Bâti sur la confiance, engagé vers l'excellence",
-    "missionBody": "Opérant sous le modèle de développement des jeunes Made By Young Hands, nous connectons les écoles, les clubs sportifs, les familles et les partenaires communautaires dans un système unifié qui suit le développement, la participation et les résultats à long terme.",
-    "missionStandards": "Notre plateforme répond aux normes rigoureuses examinées par les municipalités, Vinnova, les écoles, les fédérations sportives, les sponsors corporatifs et les ONG à travers la Suède.",
-    "childSafeguardingPolicy": "Protection de l'enfance",
-    "dataProtection": "Protection des données",
-    "financialTransparency": "Transparence financière",
-    "ethicalGovernance": "Gouvernance éthique",
-    "programsTitle": "Nos programmes de développement",
-    "programsSubtitle": "Parcours complets conçus pour soutenir tous les aspects du développement des jeunes, de la réussite académique à la croissance personnelle.",
-    "viewAllPrograms": "Voir tous les programmes",
+    "createAccount": "Créez Votre Compte",
+    "missionTitle": "Bâti sur la Confiance, Engagé pour l'Excellence",
+    "missionBody": "Opérant sous le modèle de développement des jeunes Made By Young Hands, nous connectons les écoles, clubs sportifs, familles et partenaires communautaires en un système unifié qui suit le développement, la participation et les résultats à long terme.",
+    "missionStandards": "Notre plateforme répond aux normes rigoureuses examinées par les municipalités, Vinnova, les écoles, fédérations sportives, sponsors d'entreprise et ONG à travers la Suède.",
+    "childSafeguardingPolicy": "Protection de l'Enfance",
+    "dataProtection": "Protection des Données",
+    "financialTransparency": "Transparence Financière",
+    "ethicalGovernance": "Gouvernance Éthique",
+    "programsTitle": "Nos Programmes de Développement",
+    "programsSubtitle": "Parcours complets conçus pour soutenir tous les aspects du développement des jeunes, de la réussite scolaire à la croissance personnelle.",
+    "viewAllPrograms": "Voir Tous les Programmes",
     "missionPillars": {
-      "safeguardingDesc": "Tolérance zéro, procédures de signalement claires et standards élevés pour tous les adultes.",
-      "dataProtectionDesc": "Protection des données « GDPR-first » : gestion, conservation et droits intégrés.",
-      "financialDesc": "Rapports transparents, audit et documentation exportable pour les partenaires.",
-      "ethicalDesc": "Gouvernance claire, gestion des conflits d’intérêts et responsabilité."
+      "safeguardingDesc": "Zéro tolérance en matière de protection avec des rapports clairs et des normes strictes pour tous les adultes.",
+      "dataProtectionDesc": "Gestion des données prioritaire GDPR, politiques de conservation et droits des utilisateurs intégrés.",
+      "financialDesc": "Rapports transparents, pratiques d'audit et documentation exportable pour les partenaires.",
+      "ethicalDesc": "Pratiques de gouvernance claires, gestion des conflits et normes de responsabilité."
     }
   },
   "about": {
     "title": "À propos",
     "missionTitle": "Notre Mission",
-    "missionBody": "Nous développons les jeunes grâce à des parcours structurés et sécurisés qui combinent soutien scolaire, rétention des filles dans le sport (avec un accent fort sur le football), développement des compétences créatives et mentorat.\n\nOpérant sous le modèle de développement des jeunes Made By Young Hands, nous connectons les écoles, les clubs sportifs, les familles et les partenaires communautaires dans un système unifié qui suit la participation, le développement personnel et les résultats à long terme, avec un accent particulier sur l'inclusion sociale des jeunes issus de milieux étrangers et de communautés défavorisées.\n\nNotre plateforme est conçue pour répondre aux normes de gouvernance, de protection et de transparence examinées par les municipalités, VGFF/SVFF, Vinnova, les écoles, les sponsors corporatifs et les organisations de développement des jeunes à travers la Suède.",
+    "missionBody": "Nous développons les jeunes à travers des parcours structurés et protégés qui combinent soutien scolaire, rétention des filles dans le sport (avec un fort accent sur le football), développement de compétences créatives et mentorat.\n\nOpérant sous le modèle de développement des jeunes Made By Young Hands, nous connectons les écoles, clubs sportifs, familles et partenaires communautaires en un système unifié qui suit la participation, le développement personnel et les résultats à long terme, avec un accent particulier sur l'inclusion sociale pour les jeunes d'origine étrangère et des communautés sous-dotées.\n\nNotre plateforme est conçue pour répondre aux normes de gouvernance, de protection et de transparence examinées par les municipalités, VGFF/SVFF, Vinnova, les écoles, sponsors d'entreprise et organisations de développement des jeunes à travers la Suède.",
     "values": {
-      "youthFirstTitle": "Jeunes d'abord",
+      "youthFirstTitle": "Jeunesse d'Abord",
       "youthFirstDesc": "Chaque décision que nous prenons priorise le bien-être, le développement et l'avenir des jeunes que nous servons.",
       "inclusiveTitle": "Excellence Inclusive",
-      "inclusiveDesc": "Nous créons des environnements sûrs et ambitieux pour les filles et les garçons, y compris les jeunes issus de milieux étrangers et de communautés défavorisées.",
+      "inclusiveDesc": "Nous créons des environnements sûrs et ambitieux pour les filles et garçons, y compris les jeunes d'origine étrangère et des communautés sous-dotées.",
       "communityTitle": "Partenariat Communautaire",
-      "communityDesc": "Nous connectons les écoles, les clubs, les familles, les municipalités et les sponsors dans un système de soutien coordonné.",
+      "communityDesc": "Nous connectons écoles, clubs, familles, municipalités et sponsors en un système de soutien coordonné.",
       "impactTitle": "Impact Mesurable",
-      "impactDesc": "Nous suivons la participation, la présence et les progrès afin que les partenaires puissent voir les résultats et la valeur à long terme."
+      "impactDesc": "Nous suivons la participation, la présence et les progrès pour que les partenaires puissent voir les résultats et la valeur à long terme."
     }
   },
   "programs": {
     "title": "Nos Programmes",
-    "subtitle": "Nos programmes sont conçus comme des parcours connectés. Les participants peuvent rejoindre à n'importe quel stade et progresser au fil du temps.",
+    "subtitle": "Nos programmes sont conçus comme des parcours connectés. Les participants peuvent rejoindre à n'importe quel stade et progresser avec le temps.",
     "schoolSupport": "Soutien Scolaire",
-    "footballDevelopment": "Développement du Football",
+    "footballDevelopment": "Développement Football",
     "mentorship": "Mentorat",
     "creativeSkills": "Compétences Créatives",
     "socialIntegration": "Intégration Sociale",
-    "socialIntegrationTitle": "Intégration Sociale et Appartenance par le Sport et la Créativité",
+    "socialIntegrationTitle": "Intégration Sociale & Appartenance par le Sport & la Créativité",
     "socialIntegrationSubtitle": "(Jeunes d'Origine Étrangère / Nouveaux en Suède)",
-    "socialIntegrationDescription": "Ce programme soutient les jeunes issus de familles migrantes, réfugiées et d'origine étrangère en utilisant le sport et le travail créatif comme outils d'intégration, de développement linguistique et d'appartenance sociale.",
+    "socialIntegrationDescription": "Ce programme soutient les jeunes de familles migrantes, réfugiées et d'origine étrangère en utilisant le sport et le travail créatif comme outils d'intégration, de développement linguistique et d'appartenance sociale.",
     "activitiesTitle": "Activités",
-    "mixedTeams": "Groupes d'entraînement d'équipe à origines mixtes",
+    "mixedTeams": "Groupes d'entraînement mixtes",
     "languageThroughSport": "Sessions de suédois par le sport",
-    "mentorshipPairing": "Jumelage de mentorat (jeunes locaux + nouveaux jeunes)",
+    "mentorshipPairing": "Jumelage mentorat (jeunes locaux + jeunes nouveaux arrivants)",
     "parentEvenings": "Soirées d'engagement parental (multilingues)",
     "creativeWorkshops": "Ateliers créatifs reflétant l'identité culturelle",
     "readMore": "Lire plus",
     "workshops": "Ateliers",
     "outcomes": "Résultats",
-    "creativeSkillsDescription": "Ateliers qui développent la confiance, la collaboration et les compétences pratiques. Ces sessions complètent les parcours sportifs et éducatifs.",
+    "creativeSkillsDescription": "Ateliers qui construisent la confiance, la collaboration et les compétences pratiques. Ces sessions complètent les parcours sportifs et éducatifs.",
     "weeklyTraining": "Entraînement hebdomadaire",
     "intensiveTraining": "Entraînement intensif haute ambition",
-    "mentorCircles": "Cercles de mentors",
-    "volunteerCoordination": "Coordination des bénévoles",
-    "schoolSupportDescription": "Soutien aux devoirs, planification des études et guidage structuré pour les 7-15 ans. Les sessions sont conçues pour compléter les routines scolaires et aider les participants à développer des habitudes régulières.",
+    "mentorCircles": "Cercles de mentorat",
+    "volunteerCoordination": "Coordination bénévoles",
+    "schoolSupportDescription": "Soutien aux devoirs, planification des études et accompagnement structuré pour les 7–15 ans. Les sessions sont conçues pour compléter les routines scolaires et aider les participants à construire des habitudes constantes.",
     "whatWeDo": "Ce que nous faisons",
-    "howItConnects": "Comment cela se connecte",
+    "howItConnects": "Comment ça s'articule",
     "footballDescription": "Parcours d'entraînement pour garçons et filles de 7 à 20 ans avec un fort accent sur la rétention à long terme, la confiance et une culture de performance saine.",
-    "mentorshipDescription": "Cercles de mentors et sessions de guidage pour les 15-20 ans, axés sur les objectifs, les parcours éducatifs, le leadership et la prise de décision sécurisée."
+    "mentorshipDescription": "Cercles de mentorat et sessions d'accompagnement pour les 15–20 ans, axés sur les objectifs, parcours éducatifs, leadership et prise de décision sécurisée."
   },
   "governance": {
     "title": "Gouvernance",
@@ -137,113 +142,129 @@
   },
   "activities": {
     "title": "Calendrier des Activités",
-    "subtitle": "Sessions d'entraînement et de développement à Trollhättan et Vänersborg (y compris Sjuntorp, Vargön, Bråland et Mellerud), avec une croissance planifiée vers Uddevalla, Grästorp et à travers le Västra Götaland.",
+    "subtitle": "Sessions d'entraînement et de développement à Trollhättan et Vänersborg (y compris Sjuntorp, Vargön, Bråland et Mellerud), avec croissance planifiée vers Uddevalla, Grästorp et à travers Västra Götaland.",
     "filtersTitle": "Filtres",
     "programType": "Type de Programme",
-    "ageGroup": "Groupe d'Âge",
+    "ageGroup": "Tranche d'âge",
     "location": "Lieu",
     "all": "Tous",
     "couldNotLoad": "Impossible de charger les activités.",
     "setupHint": "Assurez-vous que votre projet Supabase est configuré et que le schéma dans supabase/schema.sql a été appliqué.",
     "missingEnvTitle": "Supabase n'est pas configuré",
     "missingEnvBody": "Ajoutez VITE_SUPABASE_URL et VITE_SUPABASE_PUBLISHABLE_KEY à votre fichier .env et redémarrez le serveur de développement.",
-    "emptyTitle": "Aucune activité pour le moment",
-    "emptyBody": "Connectez-vous en tant qu'administrateur pour ajouter des activités, ou chargez des données d'exemple pour commencer.",
-    "create": "Créer une activité",
+    "emptyTitle": "Aucune activité pour l'instant",
+    "emptyBody": "Connectez-vous en tant qu'admin pour ajouter des activités, ou chargez des données d'exemple pour commencer.",
+    "create": "Créer une Activité",
     "seed": "Charger des activités exemple",
-    "attending": "Participera",
-    "notAttending": "Ne participera pas",
+    "attending": "Présent",
+    "notAttending": "Non Présent",
     "waitlist": "Liste d'attente",
-    "signInToRsvp": "Connectez-vous pour répondre",
-    "safeguardingGateTitle": "Acceptez la politique de protection pour répondre",
-    "safeguardingGateBody": "Pour protéger les enfants et les jeunes, un accusé de réception numérique de la politique de protection est requis avant que les actions de réponse/participation ne soient autorisées.",
-    "acknowledge": "J'accepte la politique",
+    "signInToRsvp": "Connectez-vous pour RSVP",
+    "safeguardingGateTitle": "Reconnaître la politique de protection pour RSVP",
+    "safeguardingGateBody": "Pour protéger les enfants et les jeunes, une reconnaissance numérique de la politique de protection est requise avant que les actions RSVP/présence ne soient autorisées.",
+    "acknowledge": "Je reconnais la politique",
+    "agesLabel": "Âges",
+    "capacityLabel": "Capacité",
+    "capacityNotApplicable": "Non applicable",
+    "seedTitles": {
+      "intensiveFootballRotating": "Développement football intensif (garçons & filles 15–20) – lieu rotatif",
+      "assignmentHelpExtra": "Aide aux devoirs & exercices académiques supplémentaires",
+      "trainingGroundVisit": "Visite sur terrain d'entraînement (évaluation & soutien) – Âges {{min}}–{{max}}",
+      "assignmentHelpMentorship": "Aide aux devoirs & soutien mentorat"
+    },
+    "locationNotes": {
+      "venueChangesWeekly": "le lieu change chaque semaine",
+      "visitingGrounds": "visite sur terrains d'entraînement"
+    },
     "dialog": {
-      "title": "Nouvelle activité",
+      "title": "Nouvelle Activité",
       "activityTitle": "Titre",
-      "programType": "Type de programme",
-      "ageMin": "Âge minimum",
-      "ageMax": "Âge maximum",
+      "programType": "Type de Programme",
+      "ageMin": "Âge Minimum",
+      "ageMax": "Âge Maximum",
       "location": "Lieu",
-      "startsAt": "Heure de début",
-      "endsAt": "Heure de fin",
+      "startsAt": "Heure de Début",
+      "endsAt": "Heure de Fin",
       "capacity": "Capacité",
       "save": "Enregistrer",
-      "cancel": "Annuler"
+      "cancel": "Annuler",
+      "agesLabel": "Âge",
+      "capacityLabel": "Capacité",
+      "capacityNotApplicable": "Non applicable"
     }
   },
   "programTypes": {
     "schoolSupport": "Soutien Scolaire",
-    "footballDevelopment": "Développement du Football",
+    "footballDevelopment": "Développement Football",
     "mentorship": "Mentorat",
     "creativeSkills": "Compétences Créatives",
-    "socialIntegration": "Intégration Sociale et Appartenance"
+    "socialIntegration": "Intégration Sociale & Appartenance"
   },
   "auth": {
     "title": "Connexion",
-    "choosePath": "Choisir la méthode de connexion",
+    "choosePath": "Choisissez la Méthode de Connexion",
     "youth": "Participant (Jeune/Parent)",
-    "staff": "Bénévole/Staff/Conseil",
+    "staff": "Bénévole/Personnel/Conseil",
     "youthSigninTitle": "Connexion (Participant)",
-    "youthSignupTitle": "Créer un compte (Participant)",
-    "staffSigninTitle": "Connexion (Staff)",
-    "staffSignupTitle": "Créer un compte avec code d'invitation",
+    "youthSignupTitle": "Créer un Compte (Participant)",
+    "staffSigninTitle": "Connexion (Personnel)",
+    "staffSignupTitle": "Créer un Compte avec Code d'Invitation",
     "email": "Email",
-    "password": "Mot de passe",
-    "fullName": "Nom complet",
-    "inviteCode": "Code d'invitation",
-    "signIn": "Se connecter",
-    "signUp": "Créer un compte",
-    "applyInvite": "Appliquer le code d'invitation",
-    "staffNote": "Les comptes staff sont contrôlés par les administrateurs. Utilisez un code d'invitation pour vous inscrire.",
+    "password": "Mot de Passe",
+    "fullName": "Nom Complet",
+    "inviteCode": "Code d'Invitation",
+    "signIn": "Connexion",
+    "signUp": "Créer un Compte",
+    "applyInvite": "Appliquer le Code d'Invitation",
+    "staffNote": "Les comptes personnel sont contrôlés par les administrateurs. Utilisez un code d'invitation pour vous inscrire.",
     "haveAccount": "Vous avez déjà un compte ?",
     "noAccount": "Vous n'avez pas de compte ?",
     "back": "Retour"
   },
   "admin": {
-    "title": "Tableau de bord Admin",
-    "subtitle": "Exportations et supervision de la conformité (attestations de protection, non-répondants RSVP).",
+    "title": "Tableau de Bord Admin",
+    "subtitle": "Exports et supervision de conformité (reconnaissances de protection, non-répondants RSVP).",
     "tabs": {
       "overview": "Aperçu",
       "activities": "Activités",
       "enrollments": "Inscriptions",
       "invites": "Invitations",
-      "audit": "Audit des invitations",
-      "exports": "Exportations",
-      "ack": "Attestations de protection",
-      "attendance": "Présence / conformité RSVP"
+      "audit": "Audit d'Invitations",
+      "exports": "Exports",
+      "ack": "Reconnaissances de protection",
+      "attendance": "Présence / Conformité RSVP"
     },
     "exports": {
-      "safeguardingPdf": "Exporter les attestations de protection (PDF)",
-      "safeguardingCsv": "Exporter les attestations de protection (CSV)",
-      "rsvpPdf": "Exporter la conformité RSVP (PDF)"
+      "safeguardingPdf": "Exporter les Reconnaissances de Protection (PDF)",
+      "safeguardingCsv": "Exporter les Reconnaissances de Protection (CSV)",
+      "rsvpPdf": "Exporter la Conformité RSVP (PDF)"
     },
     "invites": {
-      "create": "Créer une invitation",
+      "create": "Créer une Invitation",
       "role": "Rôle",
-      "expiresDays": "Expire (jours)",
-      "maxUses": "Utilisations max",
-      "generated": "Code généré",
+      "expiresDays": "Expire (Jours)",
+      "maxUses": "Utilisations Max",
+      "generated": "Code Généré",
       "copy": "Copier",
-      "createErrorTitle": "Impossible de créer l’invitation",
+      "createErrorTitle": "Impossible de créer l'invitation",
       "generating": "Génération…",
-      "copiedBody": "Code d’invitation copié dans le presse-papiers.",
-      "redeemHint": "Le destinataire doit aller sur",
-      "redeemHint2": "et choisir Inscription avec code d’invitation.",
-      "activeListHelp": "Cette liste ne révèle pas le code lui-même (uniquement les métadonnées). Générez un nouveau code si nécessaire.",
-      "auditHelp": "Registre immuable de l’utilisation des codes d’invitation. Utile pour les audits et l’examen par sponsors/municipalités.",
-      "auditEmpty": "Aucune utilisation enregistrée pour le moment."
+      "copiedBody": "Code d'invitation copié dans le presse-papier.",
+      "redeemHint": "Le destinataire doit aller à",
+      "redeemHint2": "et choisir S'inscrire avec code d'invitation.",
+      "activeListHelp": "Cette liste ne révèle pas le code d'invitation lui-même (uniquement les métadonnées créées par admin). Générez un nouveau code si nécessaire.",
+      "auditHelp": "Enregistrement immuable de l'utilisation des invitations personnel. Cela soutient les audits de gouvernance et l'examen par les sponsors/municipalités.",
+      "auditEmpty": "Aucune utilisation d'invitation enregistrée pour l'instant."
     },
     "roles": {
       "participant": "Participant",
       "volunteer": "Bénévole",
-      "staff": "Staff",
+      "staff": "Personnel",
       "board": "Conseil",
       "admin": "Admin"
     },
     "refresh": "Actualiser",
     "expectedResponders": "Répondants attendus",
-    "responded": "A répondu",
+    "responded": "Ont répondu",
     "nonResponders": "Non-répondants",
     "automatedReminders": "Rappels automatisés",
     "selectActivity": "Sélectionner une activité",
@@ -261,91 +282,91 @@
     "inviteUsageAudit": "Journal d'audit d'utilisation des invitations",
     "usedAt": "Utilisé à",
     "usedBy": "Utilisé par",
-    "assignedRole": "Rôle attribué",
+    "assignedRole": "Rôle assigné",
     "ack": {
-      "title": "Exporter les attestations",
+      "title": "Exporter les reconnaissances",
       "csv": "CSV",
       "pdf": "PDF",
-      "description": "Cette liste est générée à partir des attestations numériques stockées dans le backend.",
-      "total": "Total des attestations"
+      "description": "Cette liste est générée à partir des reconnaissances numériques signées stockées dans le backend.",
+      "total": "Total des reconnaissances"
     },
     "attendance": {
       "title": "Rapport de conformité RSVP",
-      "chooseActivity": "Choisissez une activité...",
+      "chooseActivity": "Choisir une activité…",
       "unnamedUser": "Utilisateur sans nom",
-      "showingFirst15": "Affichage des 15 premiers. Exportez le PDF pour la liste complète.",
-      "remindersHelp": "Le système prend en charge des e-mails de rappel RSVP planifiés via un Cron Vercel appelant",
-      "remindersHelp2": "Configurez les variables d’environnement du fournisseur d’e-mails pour activer l’envoi réel."
+      "showingFirst15": "Affichage des 15 premiers. Exportez PDF pour la liste complète.",
+      "remindersHelp": "Le système prend en charge les rappels RSVP programmés par email via une tâche Cron Vercel appelant",
+      "remindersHelp2": "Configurez les variables d'environnement du fournisseur d'email pour activer la livraison réelle."
     },
-    "enrollmentsHelp": "Les inscriptions définissent qui est censé répondre (RSVP) pour chaque activité. Le rapport et les rappels automatiques ciblent uniquement les participants ayant une inscription active correspondant au type de programme (et éventuellement au lieu).",
+    "enrollmentsHelp": "Les inscriptions définissent qui est censé RSVP pour chaque activité. Le rapport de conformité RSVP et l'automatisation des rappels ne ciblent que les participants ayant une inscription active correspondant au type de programme de l'activité (et lieu optionnel).",
     "locationOptional": "optionnel",
     "locationExample": "ex. Sjuntorp, Vargön, Bråland",
     "enrollmentSavedTitle": "Inscription enregistrée",
-    "enrollmentSavedBody": "Le participant est désormais inclus dans la conformité RSVP pour ce type de programme.",
-    "enrollmentSaveErrorTitle": "Impossible d’enregistrer l’inscription",
-    "invitesHelp": "Les codes d’invitation permettent une inscription contrôlée du staff (bénévoles, personnel/coach, conseil). Ils peuvent expirer et être limités en nombre d’utilisations.",
+    "enrollmentSavedBody": "Le participant est maintenant inclus dans la conformité RSVP pour ce type de programme.",
+    "enrollmentSaveErrorTitle": "Impossible d'enregistrer l'inscription",
+    "invitesHelp": "Les codes d'invitation permettent l'inscription contrôlée du personnel pour bénévoles, travailleurs/entraîneurs et membres du conseil. Les codes peuvent expirer et être limités en nombre d'utilisations.",
     "inviteList": {
       "role": "Rôle",
       "uses": "Utilisations",
       "expires": "Expire",
       "created": "Créé",
-      "noExpiry": "Pas d’expiration",
+      "noExpiry": "Pas d'expiration",
       "empty": "Aucune invitation active trouvée."
     },
     "pdf": {
-      "safeguardingTitle": "Attestations de politique de protection",
+      "safeguardingTitle": "Reconnaissances de Politique de Protection",
       "generated": "Généré",
       "name": "Nom",
       "email": "Email",
       "policy": "Politique",
-      "acknowledgedAt": "Confirmé le",
-      "attendanceTitle": "Rapport de présence / conformité RSVP",
+      "acknowledgedAt": "Reconnu à",
+      "attendanceTitle": "Rapport de Présence / Conformité RSVP",
       "activity": "Activité",
       "start": "Début",
       "location": "Lieu",
       "rsvp": "RSVP",
-      "respondedAt": "A répondu le",
+      "respondedAt": "Répondu à",
       "nonRespondersTitle": "Non-répondants (pas de RSVP)"
     }
   },
   "staff": {
-    "title": "Portail Staff",
-    "subtitle": "Outils pour bénévoles, staff et membres du conseil : activités, participants et rapports.",
+    "title": "Portail Personnel",
+    "subtitle": "Outils pour bénévoles, personnel et membres du conseil : activités, participants et rapports.",
     "cards": {
       "activities": {
         "title": "Activités",
-        "description": "Consultez le planning hebdomadaire/mensuel, les lieux et les détails des sessions. Utilisez-le pour préparer le staff et le suivi.",
+        "description": "Voir le planning hebdomadaire/mensuel, lieux et détails des sessions. Utilisez pour préparer le personnel et le suivi.",
         "cta": "Ouvrir les activités"
       },
       "governance": {
         "title": "Gouvernance & Protection",
-        "description": "Consultez les documents de protection, de données et de gouvernance. Le staff doit respecter ces politiques.",
+        "description": "Examiner les documents de protection, protection des données et gouvernance. Le personnel doit suivre ces politiques.",
         "cta": "Politique de protection"
       },
       "admin": {
         "title": "Admin",
-        "description": "Outils d’administration pour exports de conformité, invitations staff et gestion des inscriptions.",
+        "description": "Outils d'administration pour exports de conformité, invitations personnel et gestion des inscriptions.",
         "cta": "Ouvrir le tableau de bord admin"
       }
     }
   },
   "governancePages": {
     "safeguardingTitle": "Politique de Protection de l'Enfance",
-    "dataProtectionTitle": "Protection des Données et GDPR",
+    "dataProtectionTitle": "Protection des Données & GDPR",
     "financialTitle": "Transparence Financière",
     "conflictTitle": "Conflit d'Intérêts"
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Que vous soyez parent, bénévole potentiel, organisation partenaire ou sponsor, nous aimerions avoir de vos nouvelles. Contactez-nous et discutons de la façon dont nous pouvons travailler ensemble.",
+    "subtitle": "Que vous soyez parent, bénévole potentiel, organisation partenaire ou sponsor, nous aimerions avoir de vos nouvelles. Contactez-nous et discutons comment travailler ensemble.",
     "emailLabel": "Email",
     "locationLabel": "Lieu",
     "locationValue": "Trollhättan, Suède",
-    "cta": "Envoyer un email",
-    "getInTouch": "Contactez-nous",
-    "responseTime": "Délai de réponse",
+    "cta": "Envoyer un Email",
+    "getInTouch": "Prenez Contact",
+    "responseTime": "Délai de Réponse",
     "responseTimeValue": "Nous visons à répondre dans les 48 heures",
-    "specificInquiries": "Demandes spécifiques",
+    "specificInquiries": "Demandes Spécifiques",
     "safeguardingEmail": "Protection : safeguarding@07-20.org",
     "dataProtectionEmail": "Protection des données : dpo@07-20.org",
     "sponsorshipEmail": "Sponsoring : partners@07-20.org",
@@ -356,19 +377,19 @@
     "subject": "Sujet",
     "message": "Message",
     "sending": "Envoi en cours...",
-    "sendMessageButton": "Envoyer le message",
+    "sendMessageButton": "Envoyer le Message",
     "toast": {
       "successTitle": "Message envoyé !",
       "successBody": "Nous vous répondrons dès que possible.",
-      "errorTitle": "Envoi impossible",
-      "errorBody": "Veuillez réessayer dans un instant."
+      "errorTitle": "Impossible d'envoyer le message",
+      "errorBody": "Veuillez réessayer dans un moment."
     },
     "placeholders": {
       "firstName": "Anna",
       "lastName": "Svensson",
       "email": "anna@example.com",
       "subject": "Comment pouvons-nous aider ?",
-      "message": "Dites-nous en plus sur votre demande…"
+      "message": "Dites-nous en plus sur votre demande..."
     }
   },
   "footer": {
@@ -379,207 +400,207 @@
     "copyright": "© 2026 Initiative de Développement des Jeunes 07-20. Tous droits réservés",
     "nonProfitRegistration": "Enregistrement à but non lucratif : 12345-2023",
     "madeWithPassion": "Fait avec passion pour le développement des jeunes en Suède",
-    "legalLinks": "Liens légaux",
-    "privacyPolicy": "Politique de confidentialité",
-    "termsOfService": "Conditions d'utilisation",
-    "cookiePolicy": "Politique des cookies",
-    "sitemap": "Plan du site",
-    "imprint": "Mentions légales",
-    "addressNote": "(Centre-ville – emplacement temporaire jusqu’à l’adresse enregistrée)",
+    "legalLinks": "Liens Légaux",
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfService": "Conditions d'Utilisation",
+    "cookiePolicy": "Politique des Cookies",
+    "sitemap": "Plan du Site",
+    "imprint": "Mentions Légales",
+    "addressNote": "(Centre-ville - emplacement temporaire jusqu'à adresse enregistrée)",
     "viewMapFullScreen": "Voir la carte en plein écran →",
-    "mapAttribution": "© contributeurs OpenStreetMap"
+    "mapAttribution": "© Contributeurs OpenStreetMap"
   },
   "notFound": {
-    "title": "Oups ! Page introuvable",
-    "backHome": "Retour à l’accueil"
+    "title": "Oups ! Page non trouvée",
+    "backHome": "Retour à l'Accueil"
   },
   "programPages": {
     "schoolSupport": {
       "whatWeDo": {
-        "1": "Sessions hebdomadaires d’aide aux devoirs (petits groupes)",
-        "2": "Plans d’étude et suivi des objectifs",
-        "3": "Conseils aux parents/tuteurs sur les routines et le suivi"
+        "1": "Sessions de soutien aux devoirs hebdomadaires (petits groupes)",
+        "2": "Plans d'étude et suivi des objectifs",
+        "3": "Guidance pour parents/tuteurs sur routines et suivi"
       },
       "howItConnects": {
-        "1": "Suivi de présence aligné sur la protection de l’enfance et le RGPD",
-        "2": "Retours des mentors intégrés aux profils de progression",
-        "3": "Synthèses exportables pour la collaboration scolaire (avec consentement)"
+        "1": "Suivi de présence aligné avec protection et protection des données",
+        "2": "Retours mentors intégrés aux profils de progression des participants",
+        "3": "Résumés exportables pour collaboration scolaire (lorsque le consentement s'applique)"
       }
     },
     "football": {
       "weeklyTraining": {
-        "1": "Séances par tranche d’âge à Trollhättan et Vänersborg (y compris Sjuntorp et Vargön)",
-        "2": "Séances séparées pour filles et garçons lorsque pertinent",
-        "3": "Règles de présence/RSVP (fenêtre de 48 h) prises en charge par la plateforme"
+        "1": "Sessions par groupe d'âge à Trollhättan et Vänersborg (y compris Sjuntorp et Vargön)",
+        "2": "Sessions séparées garçons et filles le cas échéant",
+        "3": "Règles de présence et RSVP (fenêtre de réponse 48h) supportées par la plateforme"
       },
       "intensiveTraining": {
         "1": "Vendredis 17:00–18:30 pour les 15–20 ans",
         "2": "Focus technique/tactique individuel avec journaux de feedback",
-        "3": "Adapté aux participants visant un niveau compétitif plus élevé"
+        "3": "Adapté aux participants visant des niveaux compétitifs plus élevés"
       }
     },
     "mentorship": {
       "mentorCircles": {
-        "1": "Séances régulières en petits groupes avec une équipe de mentors stable",
-        "2": "Standards de protection clairs et procédures de signalement",
-        "3": "Suivi de la participation et de l’engagement"
+        "1": "Sessions régulières en petits groupes avec équipes de mentors constantes",
+        "2": "Normes de protection claires et procédures de signalement",
+        "3": "Suivi de présence et d'engagement des participants"
       },
       "volunteerCoordination": {
-        "1": "Les bénévoles peuvent s’inscrire et réserver leurs disponibilités",
-        "2": "Les admins peuvent confirmer les affectations et exporter des synthèses de couverture",
-        "3": "Accusés de réception numériques des politiques (protection et RGPD)"
+        "1": "Les bénévoles peuvent s'inscrire et réserver leur disponibilité",
+        "2": "Les admins peuvent confirmer les affectations et exporter des résumés de couverture",
+        "3": "Reconnaissances numériques des politiques (protection et protection des données)"
       }
     },
     "creative": {
       "workshops": {
         "1": "Ateliers créatifs (médias, arts et apprentissage par projet)",
         "2": "Environnement sûr et inclusif avec attentes de conduite claires",
-        "3": "Séances adaptées aux âges 8–14 et groupes mixtes"
+        "3": "Sessions adaptées à l'âge pour 8–14 ans et groupes mixtes"
       },
       "outcomes": {
-        "1": "Amélioration de la confiance et de la communication",
+        "1": "Améliorations de la confiance et de la communication",
         "2": "Participation documentée et notes de progression",
-        "3": "Synthèses exportables pour les partenaires (avec consentement)"
+        "3": "Résumés exportables pour partenaires lorsque le consentement s'applique)"
       }
     },
     "socialIntegration": {
-      "fundableTitle": "Description du programme (langage finançable)",
-      "fundableBody": "L’approche renforce des facteurs de protection tels que le soutien adulte constant, l’appartenance entre pairs et des routines structurées, tout en créant des ponts entre familles, écoles, clubs et communauté.",
+      "fundableTitle": "Description du Programme (Langage finançable)",
+      "fundableBody": "L'approche renforce les facteurs de protection tels que le soutien adulte constant, l'appartenance aux pairs et les routines structurées, tout en construisant des ponts entre familles, écoles, clubs et communautés locales.",
       "outcomesMeasuredTitle": "Résultats que nous mesurons",
       "outcomesMeasured": {
-        "1": "Régularité de participation et rétention dans le temps.",
-        "2": "Appartenance sociale accrue et liens entre pairs.",
-        "3": "Confiance accrue en suédois dans des situations pratiques.",
+        "1": "Constance de participation et rétention dans le temps.",
+        "2": "Augmentation de l'appartenance sociale et des connexions entre pairs.",
+        "3": "Amélioration de la confiance en suédois dans des contextes pratiques.",
         "4": "Engagement familial et force du réseau de soutien."
       },
-      "whoForTitle": "Pour qui",
-      "whoForBody": "Jeunes de 7 à 20 ans à Trollhättan et Vänersborg, avec un focus sur les jeunes nouveaux en Suède ou issus de communautés sous-dotées recherchant des parcours sûrs et structurés vers le sport, la créativité et le mentorat."
+      "whoForTitle": "Pour qui c'est",
+      "whoForBody": "Jeunes de 7 à 20 ans à Trollhättan et Vänersborg avec un focus sur les jeunes nouvellement arrivés en Suède, ou de communautés sous-dotées cherchant des voies sûres et structurées vers le sport, la créativité et le mentorat."
     }
   },
   "governanceContent": {
-    "badge": "Politique de gouvernance",
+    "badge": "Politique de Gouvernance",
     "safeguarding": {
-      "lead": "La sécurité et le bien‑être de chaque jeune participant sont notre priorité. Cette politique décrit notre engagement à créer un environnement sûr pour tous.",
+      "lead": "La sécurité et le bien-être de chaque jeune dans nos programmes sont notre priorité absolue. Cette politique décrit notre engagement à créer un environnement sûr pour tous les participants.",
       "policies": {
         "zeroTolerance": {
-          "title": "Tolérance zéro",
-          "desc": "Tolérance zéro pour tout abus, négligence, exploitation ou harcèlement."
+          "title": "Zéro Tolérance",
+          "desc": "Nous maintenons une tolérance zéro pour tout abus, négligence, exploitation ou harcèlement de quelque nature que ce soit."
         },
         "backgroundChecks": {
-          "title": "Vérifications d’antécédents",
-          "desc": "Tout le staff, les bénévoles et les entraîneurs passent des vérifications obligatoires avant de travailler avec des enfants."
+          "title": "Vérifications des Antécédents",
+          "desc": "Tout le personnel, bénévoles et entraîneurs subissent des vérifications d'antécédents obligatoires avant de travailler avec des enfants."
         },
         "codeOfConduct": {
-          "title": "Code de conduite",
-          "desc": "Standards de comportement clairs pour tous les adultes en contact avec les jeunes."
+          "title": "Code de Conduite",
+          "desc": "Normes comportementales claires pour tous les adultes interagissant avec des jeunes dans nos programmes."
         },
         "reporting": {
-          "title": "Procédures de signalement",
-          "desc": "Canaux confidentiels et accessibles pour signaler des préoccupations."
+          "title": "Procédures de Signalement",
+          "desc": "Canaux confidentiels et accessibles pour signaler toute préoccupation de protection."
         }
       },
-      "commitmentTitle": "Notre engagement",
-      "commitmentBody": "07–20 s’engage à protéger et promouvoir le bien‑être des enfants et des jeunes. Nous attendons de tout le staff, des bénévoles, des entraîneurs et des partenaires qu’ils partagent cet engagement.",
-      "principlesTitle": "Principes clés",
+      "commitmentTitle": "Notre Engagement",
+      "commitmentBody": "L'Initiative de Développement des Jeunes 07–20 s'engage à protéger et promouvoir le bien-être des enfants et des jeunes. Nous attendons que tout le personnel, bénévoles, entraîneurs et organisations partenaires partagent cet engagement.",
+      "principlesTitle": "Principes Clés",
       "principles": {
-        "1": "L’intérêt supérieur de l’enfant prime dans tout notre travail",
-        "2": "Tous les enfants ont droit à une protection contre les abus et l’exploitation",
-        "3": "La protection est la responsabilité de chacun",
-        "4": "Nous travaillons en partenariat avec les familles et la communauté",
+        "1": "Le bien-être des enfants est primordial dans tout notre travail",
+        "2": "Tous les enfants ont droit à la protection contre les abus et l'exploitation",
+        "3": "La protection est la responsabilité de tous",
+        "4": "Nous travaillons en partenariat avec les familles et les communautés",
         "5": "Nous maintenons des pratiques transparentes et responsables"
       },
-      "reportingTitle": "Signaler une préoccupation",
-      "reportingBody": "Si vous avez une préoccupation, contactez immédiatement notre responsable protection. Tous les signalements sont traités de façon confidentielle, conformément au droit suédois et aux bonnes pratiques.",
-      "contactTitle": "Contact protection",
+      "reportingTitle": "Signaler des Préoccupations",
+      "reportingBody": "Si vous avez des préoccupations de protection, veuillez contacter immédiatement notre responsable de protection désigné. Tous les rapports sont traités confidentiellement et conformément à la loi suédoise et aux meilleures pratiques.",
+      "contactTitle": "Contact Protection",
       "contactEmail": "Email : safeguarding@07-20.org",
-      "contactNote": "Tout le staff et les bénévoles doivent accuser réception de cette politique lors de l’intégration.",
-      "ackTitle": "Accusé de réception",
-      "ackBody": "Tout le staff et les bénévoles doivent accuser réception et signer numériquement cette politique lors de la création du compte. Les signatures peuvent être exportées en PDF pour la conformité."
+      "contactNote": "Tout le personnel et bénévoles doivent reconnaître cette politique lors de leur intégration.",
+      "ackTitle": "Reconnaissance de la Politique",
+      "ackBody": "Tout le personnel et bénévoles doivent reconnaître et signer numériquement cette politique lors de la création du compte. Les reconnaissances signées sont exportables en PDF pour documentation de conformité."
     },
     "dataProtection": {
-      "lead": "Nous appliquons le RGPD. Cette page explique les données collectées, leur usage et vos droits.",
+      "lead": "Nous nous engageons à une protection des données conforme au GDPR. Cette page explique ce que nous collectons, comment nous l'utilisons et vos droits.",
       "categories": {
         "collect": {
-          "title": "Ce que nous collectons",
-          "desc": "Informations personnelles nécessaires (noms, contacts, dossiers de développement)."
+          "title": "Ce Que Nous Collectons",
+          "desc": "Informations personnelles nécessaires à la participation au programme, y compris noms, coordonnées et dossiers de développement."
         },
         "use": {
-          "title": "Comment nous l’utilisons",
-          "desc": "Uniquement pour la mise en œuvre, le suivi et les rapports aux parties prenantes avec consentement approprié."
+          "title": "Comment Nous Les Utilisons",
+          "desc": "Les données sont utilisées uniquement pour la prestation de programme, le suivi des progrès et les rapports aux parties prenantes avec consentement approprié."
         },
         "retention": {
-          "title": "Conservation",
-          "desc": "Nous conservons les données uniquement le temps nécessaire, avec des règles de rétention et de suppression claires."
+          "title": "Conservation des Données",
+          "desc": "Nous conservons les données seulement aussi longtemps que nécessaire aux fins décrites, avec des politiques de conservation claires et des routines de suppression."
         },
         "rights": {
-          "title": "Vos droits",
-          "desc": "Accéder, corriger, exporter ou supprimer vos données, et retirer votre consentement à tout moment."
+          "title": "Vos Droits",
+          "desc": "Vous pouvez accéder, corriger, exporter ou supprimer vos données personnelles, et retirer votre consentement à tout moment."
         }
       },
-      "consentTitle": "Gestion du consentement",
-      "consentBody": "Les formulaires incluent des cases de consentement RGPD. Vous pouvez retirer votre consentement via votre compte ou en contactant notre DPO.",
-      "exerciseTitle": "Exercer vos droits",
-      "exerciseBody": "Pour toute question ou pour exercer vos droits :",
-      "dpoTitle": "Délégué à la protection des données",
-      "dpoBody": "Contactez notre DPO pour les demandes liées au RGPD.",
+      "consentTitle": "Gestion du Consentement",
+      "consentBody": "Tous les formulaires d'inscription incluent des cases à cocher de consentement GDPR. Le consentement peut être retiré à tout moment via vos paramètres de compte ou en contactant notre Délégué à la Protection des Données.",
+      "exerciseTitle": "Exercez Vos Droits",
+      "exerciseBody": "Pour les demandes de protection des données ou pour exercer vos droits :",
+      "dpoTitle": "Délégué à la Protection des Données",
+      "dpoBody": "Contactez notre DPO pour les demandes de protection des données.",
       "dpoEmail": "Email : dpo@07-20.org",
-      "accountToolsTitle": "Outils du compte",
-      "accountToolsBody": "Les utilisateurs inscrits peuvent gérer leurs données via le tableau de bord. Options disponibles :",
+      "accountToolsTitle": "Outils de Compte",
+      "accountToolsBody": "Les utilisateurs enregistrés peuvent gérer leurs données directement via leur tableau de bord de compte. Les options suivantes sont disponibles :",
       "actions": {
-        "viewData": "Voir mes données",
-        "exportData": "Exporter mes données",
-        "deleteAccount": "Supprimer mon compte"
+        "viewData": "Voir Mes Données",
+        "exportData": "Exporter Mes Données",
+        "deleteAccount": "Supprimer Mon Compte"
       },
-      "note": "Note : connexion requise pour accéder à ces fonctions. Les demandes sont traitées sous 30 jours."
+      "note": "Note : Connexion requise pour accéder à ces fonctionnalités. Les demandes sont traitées sous 30 jours."
     },
     "financial": {
-      "lead": "Nous nous engageons à une transparence totale sur la réception et l’allocation des fonds. Nos pratiques répondent aux standards des municipalités, de Vinnova et des parties prenantes.",
+      "lead": "Nous nous engageons à une transparence complète sur la manière dont nous recevons et allouons les fonds. Nos pratiques financières répondent aux normes requises par les municipalités, Vinnova et autres parties prenantes.",
       "sections": {
-        "fundingSources": "Sources de financement",
-        "fundAllocation": "Affectation des fonds",
-        "auditPolicy": "Politique d’audit",
-        "antiFraud": "Prévention anti‑fraude"
+        "fundingSources": "Sources de Financement",
+        "fundAllocation": "Allocation des Fonds",
+        "auditPolicy": "Politique d'Audit",
+        "antiFraud": "Prévention de la Fraude"
       },
       "bodies": {
-        "fundingSources": "Nous documentons l’origine des fonds (municipalités, subventions, partenaires) et publions des synthèses.",
-        "fundAllocation": "Nous suivons et rapportons l’allocation des fonds entre programmes, équipe, protection et opérations.",
-        "auditPolicy": "Nos comptes sont audités chaque année par un auditeur indépendant. Les rapports peuvent être demandés.",
-        "antiFraud": "Nous appliquons des contrôles (validations, traçabilité) pour éviter toute utilisation abusive."
+        "fundingSources": "Nous documentons d'où vient le financement (municipalités, subventions, partenaires) et publions des résumés pour les parties prenantes.",
+        "fundAllocation": "Nous suivons et rapportons comment les fonds sont alloués aux programmes, personnel, protection et opérations.",
+        "auditPolicy": "Nos comptes sont examinés annuellement par un auditeur indépendant. Les rapports d'audit peuvent être demandés par les parties prenantes.",
+        "antiFraud": "Nous appliquons des contrôles pour prévenir les abus, y compris des workflows d'approbation et une tenue de registres transparente."
       },
-      "reportsTitle": "Rapports annuels",
-      "reportsBody": "Nos comptes sont audités annuellement. Les rapports d’audit sont disponibles pour les parties prenantes et peuvent être demandés via le formulaire de contact.",
-      "archiveTitle": "Archive des rapports annuels",
+      "reportsTitle": "Rapports Annuels",
+      "reportsBody": "Nos comptes sont examinés annuellement par un auditeur indépendant. Les rapports d'audit sont mis à disposition des parties prenantes et peuvent être demandés via notre formulaire de contact.",
+      "archiveTitle": "Archive des Rapports Annuels",
       "actions": {
-        "viewReports": "Voir les rapports",
-        "accessArchive": "Accéder aux rapports des années précédentes"
+        "viewReports": "Voir les Rapports",
+        "accessArchive": "Accéder aux rapports financiers des années précédentes"
       }
     },
     "coi": {
-      "lead": "Maintenir des standards éthiques et l’impartialité dans toutes nos opérations. Cette politique garantit transparence et responsabilité.",
+      "lead": "Maintenir des normes éthiques et l'impartialité dans toutes nos opérations. Cette politique assure la transparence et la responsabilité dans les processus décisionnels.",
       "sections": {
-        "disclosureTitle": "Exigences de déclaration",
-        "disclosureBody": "Les membres du conseil, le staff et les partenaires clés doivent déclarer tout conflit d’intérêts réel, potentiel ou perçu à l’entrée et lorsqu’un nouveau conflit apparaît.",
-        "recusalTitle": "Procédures de retrait",
-        "recusalBody": "Lorsqu’un conflit est identifié, la personne se retire des décisions et discussions concernées.",
-        "internalProcessTitle": "Processus interne",
-        "internalProcessBody": "Le staff et le conseil peuvent soumettre des déclarations via le portail interne. Les soumissions sont examinées par un panel réservé aux admins.",
-        "transparencyTitle": "Rapport de transparence",
-        "transparencyBody": "Nous tenons un registre des conflits déclarés. Des résumés sont inclus dans le rapport annuel de gouvernance."
+        "disclosureTitle": "Exigences de Divulgation",
+        "disclosureBody": "Tous les membres du conseil, personnel et partenaires clés doivent divulguer tout conflit d'intérêts réel, potentiel ou perçu lors de leur intégration et chaque fois qu'un nouveau conflit survient.",
+        "recusalTitle": "Procédures de Récusation",
+        "recusalBody": "Lorsqu'un conflit est identifié, la personne doit se retirer des décisions et discussions connexes.",
+        "internalProcessTitle": "Processus de Divulgation Interne",
+        "internalProcessBody": "Le personnel et membres du conseil peuvent soumettre des divulgations de conflit d'intérêts via le portail interne. Toutes les soumissions sont examinées par un panel de révision admin uniquement.",
+        "transparencyTitle": "Rapports de Transparence",
+        "transparencyBody": "Nous tenons un registre des conflits déclarés. Des informations sommaires sont incluses dans notre rapport annuel de gouvernance."
       },
-      "proceduresTitle": "Lorsqu’un conflit d’intérêts est identifié",
-      "proceduresLead": "Les procédures suivantes s’appliquent :",
+      "proceduresTitle": "Lorsqu'un conflit d'intérêts est identifié",
+      "proceduresLead": "Les procédures suivantes s'appliquent :",
       "procedures": {
-        "1": "Déclarer le conflit dès qu’il est identifié.",
-        "2": "Enregistrer la déclaration dans le registre.",
-        "3": "Se retirer des décisions concernées.",
-        "4": "Vérifier la conformité lors des audits."
+        "1": "Déclarer le conflit dès qu'il est identifié.",
+        "2": "Enregistrer la divulgation dans le registre des conflits.",
+        "3": "Se récuser des décisions où le conflit s'applique.",
+        "4": "Examiner et confirmer la conformité lors des audits."
       }
     }
   },
   "ui": {
     "more": "Plus",
     "breadcrumb": {
-      "ariaLabel": "Fil d’Ariane"
+      "ariaLabel": "Fil d'Ariane"
     },
     "pagination": {
       "previous": "Aller à la page précédente",
@@ -595,6 +616,92 @@
     "carousel": {
       "previousSlide": "Diapositive précédente",
       "nextSlide": "Diapositive suivante"
+    }
+  },
+  "team": {
+    "title": "Équipe",
+    "intro": "Rencontrez les personnes derrière 07–20 — notre fondateur, conseil et bénévoles travaillant ensemble pour construire des voies sûres et structurées pour les jeunes.",
+    "founderPageIntro": "Une brève introduction pour la page du Fondateur. Utilisez ce texte pour expliquer pourquoi 07–20 a été fondé et sur quoi se concentre le fondateur.",
+    "boardPageIntro": "Une brève introduction pour la page du Conseil. Utilisez ce texte pour expliquer la gouvernance, la responsabilité et les responsabilités de supervision.",
+    "volunteersPageIntro": "Une brève introduction pour la page des Bénévoles. Utilisez ce texte pour expliquer les rôles des bénévoles et pourquoi les bénévoles sont essentiels à une prestation sécurisée.",
+    "regionTag": "Trollhättan & Västra Götaland",
+    "partnersTag": "Écoles • Clubs • Partenaires municipaux",
+    "stationsTag": "Parcours 7–20 ans",
+    "storyTitle": "Pourquoi nous existons",
+    "storyBody": "07–20 a été créé pour donner aux jeunes un environnement sûr et ambitieux où soutien éducatif, sport, créativité et mentorat se connectent en une voie unique.\n\nNous nous concentrons sur la constance, la protection et les progrès mesurables — pour que les familles, écoles et partenaires puissent faire confiance au système.",
+    "founderTitle": "Fondateur",
+    "founder": {
+      "name": "Paul Abejegah",
+      "role": "Fondateur • Entraîneur Licence UEFA-B",
+      "body": "Paul a fondé 07–20 pour construire un système structuré de développement des jeunes combinant football, soutien scolaire et mentorat.\n\nSon travail se concentre sur la rétention à long terme, la protection et la création d'environnements où les jeunes développent confiance, discipline et ambition saine."
+    },
+    "sharedValuesTitle": "Valeurs Partagées",
+    "sharedValuesBody": "Nous menons par la protection, la constance et la responsabilité. Nous construisons des relations de soutien, fixons des attentes claires et suivons les progrès pour que chaque jeune puisse grandir.",
+    "boardTitle": "Membres du Conseil",
+    "board": {
+      "idris": {
+        "name": "Idris Ajriaj",
+        "role": "Membre du Conseil • Arbitre & Soutien Communautaire",
+        "body": "Soutient la gouvernance et l'intégrité du programme, avec un focus sur le fair-play, connaissance des règles et environnements sûrs."
+      },
+      "goran": {
+        "name": "Göran Andersson",
+        "role": "Membre du Conseil • Mentorat & Structure",
+        "body": "Soutient la culture de mentorat, routines et structure pratique qui aide les jeunes à rester constants dans le temps."
+      },
+      "abdinasir": {
+        "name": "Ali Omar",
+        "role": "Membre du Conseil • Analyse & Identification des Talents",
+        "body": "Contribue à la planification du développement, analyse et aide les jeunes à progresser par étapes claires et mesurables."
+      },
+      "openSlot1": {
+        "name": "Poste Conseil Ouvert",
+        "role": "Recrutement",
+        "body": "Nous recrutons actuellement un membre de conseil supplémentaire avec expérience en développement des jeunes, protection, éducation ou finance."
+      },
+      "openSlot2": {
+        "name": "Poste Conseil Ouvert",
+        "role": "Recrutement",
+        "body": "Nous recrutons actuellement un membre de conseil supplémentaire avec expérience en partenariats communautaires, gouvernance ou collecte de fonds."
+      }
+    },
+    "volunteers": {
+      "title": "Bénévoles",
+      "intro": "Les bénévoles sont l'épine dorsale de la livraison — entraîneurs, mentors, soutien événementiel et adultes de confiance qui aident à gérer les sessions en sécurité.",
+      "items": {
+        "coachesTitle": "Entraîneurs",
+        "coachesBody": "Soutiennent les sessions d'entraînement, routines d'apprentissage et culture de performance positive.",
+        "mentorsTitle": "Mentors",
+        "mentorsBody": "Fournissent guidance, constance et soutien modèle pour les 15–20 ans.",
+        "supportTitle": "Équipe de Soutien",
+        "supportBody": "Aide à la logistique, flux de présence, communication et accueil des familles.",
+        "eventsTitle": "Événements & Communauté",
+        "eventsBody": "Assiste aux ateliers, événements partenaires, journées communautaires et coordination."
+      },
+      "ctaTitle": "Vous voulez être bénévole ?",
+      "ctaBody": "Si vous voulez contribuer comme entraîneur, mentor ou bénévole de soutien, contactez-nous et nous vous guiderons à travers la protection et l'intégration."
+    },
+    "badges": {
+      "uefaB": "UEFA-B",
+      "youthDevelopment": "Développement des jeunes",
+      "wellbeing": "Protection & bien-être",
+      "refereeTraining": "Expérience d'arbitrage",
+      "rules": "Règles & structure",
+      "fairPlay": "Fair-play",
+      "mentorship": "Mentorat",
+      "structure": "Structure",
+      "analysis": "Analyse",
+      "talentID": "Identification des talents",
+      "open": "Poste ouvert"
+    },
+    "dropdown": {
+      "founderName": "Paul Abejegah",
+      "founderRole": "Fondateur • Entraîneur Licence UEFA-B",
+      "boardTitle": "Membres du Conseil",
+      "boardRole": "Gouvernance & leadership communautaire",
+      "volunteersTitle": "Bénévoles",
+      "volunteersRole": "Entraîneurs, mentors & équipe de soutien",
+      "viewAll": "Voir la page complète de l'équipe"
     }
   }
 }

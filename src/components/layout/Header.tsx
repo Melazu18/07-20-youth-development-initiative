@@ -15,6 +15,19 @@ import {
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "@/i18n";
 
+type NavChild = {
+  key: string;
+  href: string;
+  descriptionKey?: string; // optional (used for org dropdown)
+  imageSrc?: string; // optional (used for org dropdown)
+};
+
+type NavItem = {
+  key: string;
+  href: string;
+  children?: readonly NavChild[];
+};
+
 /**
  * Top-level site navigation.
  *
@@ -23,6 +36,33 @@ import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "@/i18n";
 const navigation = [
   { key: "nav.home", href: "/" },
   { key: "nav.about", href: "/about" },
+
+  // ✅ Organization dropdown (Team / Founder / Board / Volunteers)
+  {
+    key: "nav.organizationMenu",
+    href: "/team",
+    children: [
+      {
+        key: "nav.founder",
+        href: "/team/founder",
+        descriptionKey: "team.dropdown.founderRole",
+        imageSrc: "/assets/team/profilePix.png",
+      },
+      {
+        key: "nav.board",
+        href: "/team/board",
+        descriptionKey: "team.dropdown.boardRole",
+        imageSrc: "/assets/team/board.jpg",
+      },
+      {
+        key: "nav.volunteers",
+        href: "/team/volunteers",
+        descriptionKey: "team.dropdown.volunteersRole",
+        imageSrc: "/assets/team/volunteers.jpg",
+      },
+    ],
+  },
+
   {
     key: "nav.programs",
     href: "/programs",
@@ -52,7 +92,7 @@ const navigation = [
     ],
   },
   { key: "nav.contact", href: "/contact" },
-] as const;
+] as const satisfies readonly NavItem[];
 
 function normalizePath(pathname: string) {
   // Remove query/hash (location.pathname shouldn’t include it, but keep safe).
@@ -81,6 +121,44 @@ function isRouteActive(currentPath: string, href: string) {
 
   // Active for the whole section
   return currentPath === href || currentPath.startsWith(`${href}/`);
+}
+
+function initialsFromKey(key: string) {
+  // "nav.founder" => "F"
+  const last = key.split(".").pop() || "";
+  return (last[0] || "?").toUpperCase();
+}
+
+function Avatar({
+  src,
+  alt,
+  fallback,
+}: {
+  src?: string;
+  alt: string;
+  fallback: string;
+}) {
+  const [imgOk, setImgOk] = useState(true);
+
+  return (
+    <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full border border-border/50 bg-secondary/40">
+      {src && imgOk ? (
+        <img
+          src={src}
+          alt={alt}
+          className="h-full w-full object-cover"
+          loading="lazy"
+          onError={() => setImgOk(false)}
+        />
+      ) : (
+        <div className="h-full w-full grid place-items-center">
+          <span className="text-xs font-semibold text-muted-foreground">
+            {fallback}
+          </span>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export function Header() {
@@ -116,9 +194,7 @@ export function Header() {
       active ? "text-foreground bg-secondary/60" : "text-muted-foreground",
       // underline animation
       "after:absolute after:left-3 after:right-3 after:-bottom-1 after:h-px after:rounded-full after:bg-foreground/60 after:transition-transform after:duration-200",
-      active
-        ? "after:scale-x-100"
-        : "after:scale-x-0 hover:after:scale-x-100",
+      active ? "after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100",
     ].join(" ");
 
   const dropdownItemClass = (active: boolean) =>
@@ -165,28 +241,115 @@ export function Header() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
-                    className={navButtonClass(isAnyChildActive(item.children))}
+                    className={navButtonClass(
+                      isActive(item.href) || isAnyChildActive(item.children),
+                    )}
                   >
                     {t(item.key)}
                     <ChevronDown className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-56">
-                  {item.children.map((child) => {
-                    const active = isActive(child.href);
-                    return (
-                      <DropdownMenuItem key={child.href} asChild>
-                        <Link to={child.href} className={dropdownItemClass(active)}>
-                          {t(child.key)}
+
+                {/* Special layout for Organization menu (profile pictures + subtitles) */}
+                {item.key === "nav.organizationMenu" ? (
+                  <DropdownMenuContent
+                    align="start"
+                    side="bottom"
+                    sideOffset={8}
+                    collisionPadding={12}
+                    avoidCollisions
+                    forceMount
+                    className="z-[60] w-80 p-2"
+                  >
+                    <div className="px-2 pb-2 pt-1">
+                      <div className="text-xs font-semibold text-muted-foreground">
+                        {t("nav.team")}
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      {item.children.map((child) => {
+                        const active = isActive(child.href);
+                        const title = t(child.key);
+                        const subtitle = child.descriptionKey
+                          ? t(child.descriptionKey)
+                          : "";
+
+                        return (
+                          <DropdownMenuItem key={child.href} asChild>
+                            <Link
+                              to={child.href}
+                              className={[
+                                "flex items-center gap-3 rounded-md px-2 py-2 transition-colors",
+                                active
+                                  ? "bg-secondary text-foreground"
+                                  : "hover:bg-secondary/50",
+                              ].join(" ")}
+                            >
+                              <Avatar
+                                src={child.imageSrc}
+                                alt={title}
+                                fallback={initialsFromKey(child.key)}
+                              />
+                              <div className="flex min-w-0 flex-col">
+                                <span className="text-sm font-medium leading-tight">
+                                  {title}
+                                </span>
+                                {subtitle ? (
+                                  <span className="text-xs text-muted-foreground leading-tight">
+                                    {subtitle}
+                                  </span>
+                                ) : null}
+                              </div>
+                            </Link>
+                          </DropdownMenuItem>
+                        );
+                      })}
+                    </div>
+
+                    <div className="mt-2 border-t border-border/50 pt-2">
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/team"
+                          className="w-full rounded-md px-2 py-2 text-sm text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors"
+                        >
+                          {t("team.dropdown.viewAll")}
                         </Link>
                       </DropdownMenuItem>
-                    );
-                  })}
-                </DropdownMenuContent>
+                    </div>
+                  </DropdownMenuContent>
+                ) : (
+                  <DropdownMenuContent
+                    align="start"
+                    side="bottom"
+                    sideOffset={8}
+                    collisionPadding={12}
+                    avoidCollisions
+                    forceMount
+                    className="z-[60] w-56"
+                  >
+                    {item.children.map((child) => {
+                      const active = isActive(child.href);
+                      return (
+                        <DropdownMenuItem key={child.href} asChild>
+                          <Link
+                            to={child.href}
+                            className={dropdownItemClass(active)}
+                          >
+                            {t(child.key)}
+                          </Link>
+                        </DropdownMenuItem>
+                      );
+                    })}
+                  </DropdownMenuContent>
+                )}
               </DropdownMenu>
             ) : (
               <Link key={item.key} to={item.href}>
-                <Button variant="ghost" className={navButtonClass(isActive(item.href))}>
+                <Button
+                  variant="ghost"
+                  className={navButtonClass(isActive(item.href))}
+                >
                   {t(item.key)}
                 </Button>
               </Link>
@@ -197,12 +360,14 @@ export function Header() {
         {/* CTA Buttons */}
         <div className="hidden lg:flex lg:items-center lg:gap-3">
           <LanguageSwitcher />
+
           {profile &&
             ["volunteer", "staff", "board", "admin"].includes(profile.role) && (
               <Link to="/staff" className="hidden lg:inline-flex">
                 <Button variant="outline">{t("nav.staffPortal")}</Button>
               </Link>
             )}
+
           {profile?.role === "admin" && (
             <Link to="/admin" className="hidden lg:inline-flex">
               <Button variant="outline">{t("nav.admin")}</Button>
@@ -214,6 +379,7 @@ export function Header() {
               {t("nav.login")}
             </Button>
           </Link>
+
           <Link to="/auth?mode=signup">
             <Button size="sm" className="bg-gradient-hero hover:opacity-90">
               {t("home.ctaSecondary")}
@@ -240,7 +406,9 @@ export function Header() {
               </div>
 
               {profile &&
-              ["volunteer", "staff", "board", "admin"].includes(profile.role) ? (
+              ["volunteer", "staff", "board", "admin"].includes(
+                profile.role,
+              ) ? (
                 <Link
                   to="/staff"
                   onClick={() => setMobileMenuOpen(false)}
@@ -259,13 +427,14 @@ export function Header() {
                   <div key={item.key} className="space-y-2">
                     <span
                       className={`text-sm font-semibold ${
-                        isAnyChildActive(item.children)
+                        isActive(item.href) || isAnyChildActive(item.children)
                           ? "text-foreground"
                           : "text-muted-foreground"
                       }`}
                     >
                       {t(item.key)}
                     </span>
+
                     <div className="ml-4 flex flex-col gap-2">
                       {item.children.map((child) => {
                         const active = isActive(child.href);
@@ -284,6 +453,21 @@ export function Header() {
                           </Link>
                         );
                       })}
+
+                      {/* "View full team page" on mobile only for org menu */}
+                      {item.key === "nav.organizationMenu" ? (
+                        <Link
+                          to="/team"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`text-sm transition-colors ${
+                            isActive("/team")
+                              ? "text-foreground font-medium"
+                              : "text-muted-foreground hover:text-foreground"
+                          }`}
+                        >
+                          {t("team.dropdown.viewAll")}
+                        </Link>
+                      ) : null}
                     </div>
                   </div>
                 ) : (
@@ -304,18 +488,22 @@ export function Header() {
 
               <div className="mt-4 flex flex-col gap-3">
                 {profile &&
-                ["volunteer", "staff", "board", "admin"].includes(profile.role) ? (
+                ["volunteer", "staff", "board", "admin"].includes(
+                  profile.role,
+                ) ? (
                   <Link to="/staff" onClick={() => setMobileMenuOpen(false)}>
                     <Button variant="outline" className="w-full">
                       {t("nav.staffPortal")}
                     </Button>
                   </Link>
                 ) : null}
+
                 <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="outline" className="w-full">
                     {t("nav.login")}
                   </Button>
                 </Link>
+
                 <Link
                   to="/auth?mode=signup"
                   onClick={() => setMobileMenuOpen(false)}

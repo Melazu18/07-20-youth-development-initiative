@@ -31,9 +31,12 @@ import { RequireStaff } from "@/lib/requireStaff";
 import "./i18n";
 import LanguageRouter from "@/routes/LanguageRouter";
 import i18n from "@/i18n";
+import Team from "./pages/Team";
+import Founder from "./pages/Team/Founder";
+import Board from "./pages/Team/Board";
+import Volunteers from "./pages/Team/Volunteers";
 
 const queryClient = new QueryClient();
-
 
 function RedirectToLang({ to }: { to: string }) {
   const lang = (i18n.language || "sv").slice(0, 2);
@@ -61,7 +64,6 @@ const App = () => (
           >
             {/* Remove the outer div with Header/Footer since Layout already has them */}
             <Routes>
-
               <Route path="/:lng" element={<LanguageRouter />}>
                 <Route index element={<Index />} />
                 <Route path="about" element={<About />} />
@@ -70,16 +72,39 @@ const App = () => (
                 <Route path="auth/youth" element={<AuthYouth />} />
                 <Route path="auth/staff" element={<AuthStaff />} />
                 <Route path="programs" element={<Programs />} />
-                <Route path="programs/school-support" element={<SchoolSupport />} />
-                <Route path="programs/football" element={<FootballDevelopment />} />
+                <Route
+                  path="programs/school-support"
+                  element={<SchoolSupport />}
+                />
+                <Route
+                  path="programs/football"
+                  element={<FootballDevelopment />}
+                />
                 <Route path="programs/mentorship" element={<Mentorship />} />
-                <Route path="programs/creative-skills" element={<CreativeSkills />} />
-                <Route path="programs/social-integration" element={<SocialIntegration />} />
+                <Route
+                  path="programs/creative-skills"
+                  element={<CreativeSkills />}
+                />
+                <Route
+                  path="programs/social-integration"
+                  element={<SocialIntegration />}
+                />
                 <Route path="contact" element={<Contact />} />
                 <Route path="safeguarding" element={<Safeguarding />} />
                 <Route path="data-protection" element={<DataProtection />} />
-                <Route path="financial-transparency" element={<FinancialTransparency />} />
-                <Route path="conflict-of-interest" element={<ConflictOfInterest />} />
+                <Route
+                  path="financial-transparency"
+                  element={<FinancialTransparency />}
+                />
+                <Route
+                  path="conflict-of-interest"
+                  element={<ConflictOfInterest />}
+                />
+                <Route path="team" element={<Team />} />
+                <Route path="team/founder" element={<Founder />} />
+                <Route path="team/board" element={<Board />} />
+                <Route path="team/volunteers" element={<Volunteers />} />
+
                 <Route
                   path="admin"
                   element={
@@ -101,23 +126,78 @@ const App = () => (
 
               <Route path="/" element={<RedirectToLang to="" />} />
               <Route path="/about" element={<RedirectToLang to="/about" />} />
-              <Route path="/activities" element={<RedirectToLang to="/activities" />} />
+              <Route
+                path="/activities"
+                element={<RedirectToLang to="/activities" />}
+              />
               <Route path="/auth" element={<RedirectToLang to="/auth" />} />
-              <Route path="/auth/youth" element={<RedirectToLang to="/auth/youth" />} />
-              <Route path="/auth/staff" element={<RedirectToLang to="/auth/staff" />} />
-              <Route path="/programs" element={<RedirectToLang to="/programs" />} />
-              <Route path="/programs/school-support" element={<RedirectToLang to="/programs/school-support" />} />
-              <Route path="/programs/football" element={<RedirectToLang to="/programs/football" />} />
-              <Route path="/programs/mentorship" element={<RedirectToLang to="/programs/mentorship" />} />
-              <Route path="/programs/creative-skills" element={<RedirectToLang to="/programs/creative-skills" />} />
-              <Route path="/programs/social-integration" element={<RedirectToLang to="/programs/social-integration" />} />
-              <Route path="/contact" element={<RedirectToLang to="/contact" />} />
-              <Route path="/safeguarding" element={<RedirectToLang to="/safeguarding" />} />
-              <Route path="/data-protection" element={<RedirectToLang to="/data-protection" />} />
-              <Route path="/financial-transparency" element={<RedirectToLang to="/financial-transparency" />} />
-              <Route path="/conflict-of-interest" element={<RedirectToLang to="/conflict-of-interest" />} />
+              <Route
+                path="/auth/youth"
+                element={<RedirectToLang to="/auth/youth" />}
+              />
+              <Route
+                path="/auth/staff"
+                element={<RedirectToLang to="/auth/staff" />}
+              />
+              <Route
+                path="/programs"
+                element={<RedirectToLang to="/programs" />}
+              />
+              <Route
+                path="/programs/school-support"
+                element={<RedirectToLang to="/programs/school-support" />}
+              />
+              <Route
+                path="/programs/football"
+                element={<RedirectToLang to="/programs/football" />}
+              />
+              <Route
+                path="/programs/mentorship"
+                element={<RedirectToLang to="/programs/mentorship" />}
+              />
+              <Route
+                path="/programs/creative-skills"
+                element={<RedirectToLang to="/programs/creative-skills" />}
+              />
+              <Route
+                path="/programs/social-integration"
+                element={<RedirectToLang to="/programs/social-integration" />}
+              />
+              <Route
+                path="/contact"
+                element={<RedirectToLang to="/contact" />}
+              />
+              <Route
+                path="/safeguarding"
+                element={<RedirectToLang to="/safeguarding" />}
+              />
+              <Route
+                path="/data-protection"
+                element={<RedirectToLang to="/data-protection" />}
+              />
+              <Route
+                path="/financial-transparency"
+                element={<RedirectToLang to="/financial-transparency" />}
+              />
+              <Route
+                path="/conflict-of-interest"
+                element={<RedirectToLang to="/conflict-of-interest" />}
+              />
               <Route path="/admin" element={<RedirectToLang to="/admin" />} />
               <Route path="/staff" element={<RedirectToLang to="/staff" />} />
+              <Route path="/team" element={<RedirectToLang to="/team" />} />
+              <Route
+                path="/team/founder"
+                element={<RedirectToLang to="/team/founder" />}
+              />
+              <Route
+                path="/team/board"
+                element={<RedirectToLang to="/team/board" />}
+              />
+              <Route
+                path="/team/volunteers"
+                element={<RedirectToLang to="/team/volunteers" />}
+              />
             </Routes>
           </Suspense>
         </BrowserRouter>

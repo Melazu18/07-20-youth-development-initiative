@@ -14,7 +14,12 @@
     "admin": "Admin Portal",
     "staffPortal": "Staff Portal",
     "login": "Sign In",
-    "logout": "Sign Out"
+    "logout": "Sign Out",
+    "organizationMenu": "Organization",
+    "team": "Team",
+    "founder": "Founder",
+    "board": "Board Members",
+    "volunteers": "Volunteers"
   },
   "common": {
     "language": "Language",
@@ -76,7 +81,7 @@
     "programsSubtitle": "Comprehensive pathways designed to support every aspect of youth development, from academic achievement to personal growth.",
     "viewAllPrograms": "View All Programs",
     "missionPillars": {
-      "safeguardingDesc": "Zero‑tolerance safeguarding with clear reporting and strong standards for all adults.",
+      "safeguardingDesc": "Zero-tolerance safeguarding with clear reporting and strong standards for all adults.",
       "dataProtectionDesc": "GDPR-first data handling, retention policies, and user rights built in.",
       "financialDesc": "Transparent reporting, audit practices, and exportable documentation for partners.",
       "ethicalDesc": "Clear governance practices, conflict management, and accountability standards."
@@ -158,6 +163,23 @@
     "safeguardingGateTitle": "Acknowledge the safeguarding policy to RSVP",
     "safeguardingGateBody": "To protect children and youth, a digital safeguarding acknowledgement is required before RSVP/attendance actions are allowed.",
     "acknowledge": "I acknowledge the policy",
+
+    "agesLabel": "Ages",
+    "capacityLabel": "Capacity",
+    "capacityNotApplicable": "Not applicable",
+
+    "seedTitles": {
+      "intensiveFootballRotating": "Intensive Football Skills Development (Boys & Girls 15–20) – Rotating venue",
+      "assignmentHelpExtra": "Assignment Help & Extra Academic Exercises",
+      "trainingGroundVisit": "Training Ground Visit (Assessments & Support) – Ages {{min}}–{{max}}",
+      "assignmentHelpMentorship": "Assignment Help & Mentorship"
+    },
+
+    "locationNotes": {
+      "venueChangesWeekly": "venue changes weekly",
+      "visitingGrounds": "visiting grounds"
+    },
+
     "dialog": {
       "title": "New Activity",
       "activityTitle": "Title",
@@ -169,7 +191,10 @@
       "endsAt": "End Time",
       "capacity": "Capacity",
       "save": "Save",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "agesLabel": "Ages",
+      "capacityLabel": "Capacity",
+      "capacityNotApplicable": "Not applicable"
     }
   },
   "programTypes": {
@@ -439,7 +464,7 @@
       "outcomes": {
         "1": "Confidence and communication improvements",
         "2": "Documented participation and progress notes",
-        "3": "Exportable summaries for partners when consent applies"
+        "3": "Exportable summaries for partners when consent applies)"
       }
     },
     "socialIntegration": {
@@ -595,6 +620,92 @@
     "carousel": {
       "previousSlide": "Previous slide",
       "nextSlide": "Next slide"
+    }
+  },
+  "team": {
+    "title": "Team",
+    "intro": "Meet the people behind 07–20 — our founder, board, and volunteers working together to build safe, structured pathways for young people.",
+    "founderPageIntro": "A short introduction for the Founder page. Use this text to explain why 07–20 was founded and what the founder focuses on.",
+    "boardPageIntro": "A short introduction for the Board page. Use this text to explain governance, accountability, and oversight responsibilities.",
+    "volunteersPageIntro": "A short introduction for the Volunteers page. Use this text to explain the volunteer roles and why volunteers are essential to safe delivery.",
+    "regionTag": "Trollhättan & Västra Götaland",
+    "partnersTag": "Schools • Clubs • Municipal partners",
+    "stationsTag": "Ages 7–20 pathway",
+    "storyTitle": "Why we exist",
+    "storyBody": "07–20 was created to give young people a safe, ambitious environment where education support, sport, creativity, and mentorship connect into one pathway.\n\nWe focus on consistency, safeguarding, and measurable progress, so families, schools, and partners can trust the system.",
+    "founderTitle": "Founder",
+    "founder": {
+      "name": "Paul Abejegah",
+      "role": "Founder • UEFA-B Licensed Coach",
+      "body": "Paul founded 07–20 to build a structured youth development system combining football, education support, and mentorship.\n\nHis work focuses on long-term retention, safeguarding, and creating environments where young people develop confidence, discipline, and healthy ambition."
+    },
+    "sharedValuesTitle": "Shared values",
+    "sharedValuesBody": "We lead with safeguarding, consistency, and accountability. We build supportive relationships, set clear expectations, and track progress so every young person can grow.",
+    "boardTitle": "Board Members",
+    "board": {
+      "idris": {
+        "name": "Idris Ajriaj",
+        "role": "Board Member • Referee & Community Support",
+        "body": "Supports governance and program integrity, with a focus on fair play, rules knowledge, and safe environments."
+      },
+      "goran": {
+        "name": "Göran Andersson",
+        "role": "Board Member • Mentorship & Structure",
+        "body": "Supports mentoring culture, routines, and practical structure that helps young people stay consistent over time."
+      },
+      "abdinasir": {
+        "name": "Ali Omar",
+        "role": "Board Member • Analysis & Talent Identification",
+        "body": "Contributes to development planning, analysis, and helping young people progress through clear, measurable steps."
+      },
+      "openSlot1": {
+        "name": "Open Board Seat",
+        "role": "Recruiting",
+        "body": "We are currently recruiting an additional board member with experience in youth development, safeguarding, education, or finance."
+      },
+      "openSlot2": {
+        "name": "Open Board Seat",
+        "role": "Recruiting",
+        "body": "We are currently recruiting an additional board member with experience in community partnerships, governance, or fundraising."
+      }
+    },
+    "volunteers": {
+      "title": "Volunteers",
+      "intro": "Volunteers are the backbone of delivery, coaches, mentors, event support, and trusted adults who help run sessions safely.",
+      "items": {
+        "coachesTitle": "Coaches",
+        "coachesBody": "Support training sessions, learning routines, and positive performance culture.",
+        "mentorsTitle": "Mentors",
+        "mentorsBody": "Provide guidance, consistency, and role-model support for ages 15–20.",
+        "supportTitle": "Support Team",
+        "supportBody": "Help with logistics, attendance flow, communication, and welcoming families.",
+        "eventsTitle": "Events & Community",
+        "eventsBody": "Assist with workshops, partner events, community days, and coordination."
+      },
+      "ctaTitle": "Want to volunteer?",
+      "ctaBody": "If you want to contribute as a coach, mentor, or support volunteer, contact us and we’ll guide you through safeguarding and onboarding."
+    },
+    "badges": {
+      "uefaB": "UEFA-B",
+      "youthDevelopment": "Youth development",
+      "wellbeing": "Safeguarding & wellbeing",
+      "refereeTraining": "Referee experience",
+      "rules": "Rules & structure",
+      "fairPlay": "Fair play",
+      "mentorship": "Mentorship",
+      "structure": "Structure",
+      "analysis": "Analysis",
+      "talentID": "Talent ID",
+      "open": "Open seat"
+    },
+    "dropdown": {
+      "founderName": "Paul Abejegah",
+      "founderRole": "Founder • UEFA-B Licensed Coach",
+      "boardTitle": "Board Members",
+      "boardRole": "Governance & community leadership",
+      "volunteersTitle": "Volunteers",
+      "volunteersRole": "Coaches, mentors & support team",
+      "viewAll": "View full team page"
     }
   }
 }
